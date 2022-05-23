@@ -1,0 +1,80 @@
+#!/bin/sh
+
+# Check for Oh My Zsh and install if we don't have it
+if ! $(which omz) > /dev/null; then
+
+    echo "💲 Installing Oh My Zsh"
+
+    #  Install Oh My Zsh
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+else
+    echo "💲 Looks like Oh My Zsh is already installed!"
+fi
+
+echo "🔌 Installing Oh My Zsh plugins"
+
+# OhMyZsh Plugins
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k
+git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete
+
+echo "🅰️  Installing Oh My Zsh fonts"
+
+# Install Powerline Fonts
+# https://github.com/powerline/fonts
+
+if test "$(uname)" = "Darwin";
+  then
+    #MacOS
+    git clone --depth=1 https://github.com/powerline/fonts.git $DOTFILES/tmp/fonts
+    cd $DOTFILES/tmp/fonts
+    ./install.sh
+    cd - && rm -rf $DOTFILES/tmp/fonts
+
+  else
+    #Linux
+    sudo apt-get install fonts-powerline
+fi
+
+echo "📥 Setting up Zsh configuration"
+
+# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
+rm -f $HOME/.zshrc
+ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
+rm -f $HOME/.zshenv
+ln -s $DOTFILES/zsh/.zshenv $HOME/.zshenv
+
+
+# Setup Power10K Profiles
+rm -f $HOME/.p10k.zsh
+ln -s $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
+
+echo "📥 Setting up SSH configuration"
+
+# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
+rm -f $HOME/.ssh/config
+mkdir $HOME/.ssh
+ln -s $DOTFILES/ssh/config $HOME/.ssh/config
+
+echo "🖥  Setting up ~/.tmux/config..."
+
+# Setup tmux
+# Further information in: https://github.com/gpakosz/.tmux
+
+git clone https://github.com/gpakosz/.tmux.git $DOTFILES/tmp/tmux
+rm -f $HOME/.tmux.conf*
+cp $DOTFILES/tmp/tmux/.tmux.conf $HOME/.tmux.conf
+cp $DOTFILES/tmp/tmux/.tmux.conf.local $HOME/.tmux.conf.local
+rm -rf $DOTFILES/tmp/tmux
+
+echo "🖥  Setting up git..."
+
+# Setup git config
+
+rm -rf $HOME/.gitconfig
+ln -s $DOTFILES/git/.gitconfig $HOME/.gitconfig
+
+rm -rf $HOME/.gitconfig.local
+ln -s $DOTFILES/git/mac.gitconfig.local $HOME/.gitconfig.local
+
+rm -rf $HOME/.gitignore
+ln -s $DOTFILES/git/mac.gitignore $HOME/.gitignore

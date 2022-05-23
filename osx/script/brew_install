@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "💻 Setting up your Mac..."
+
+# Update Homebrew recipes
+brew update
+brew upgrade
+
+# Warn about signing in in App Store before proceeding to installation
+while [[ "$signin" != "y" && "$signin" != "Y" && "$signin" != "yes" && "$signin" != "Yes" && "$signin" != "YES" ]]
+do
+    read -p "👨🏻‍💻 Confirm you have Signed-in Apple App Store before proceeding (y|N)... " signin
+done
+
+# Install all our dependencies with bundle (See Brewfile)
+
+## TODO: Handle multiple brewfiles depending on host
+brew bundle --file="$HOMEBREW_BREWFILE"

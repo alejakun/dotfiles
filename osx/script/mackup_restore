@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# Warn before mackup restoration
+while [[ "$signin" != "y" && "$signin" != "Y" && "$signin" != "yes" && "$signin" != "Yes" && "$signin" != "YES" ]]
+do
+    read -p "👨🏻‍💻 Confirm Dropbox Mackup folder is already synched (y|N)... " signin
+done
+
+# Symlink the Mackup config file to the home directory
+rm -rf $HOME/.mackup.cfg
+ln -s $HOME/.dotfiles/osx/mackup/mackup.cfg $HOME/.mackup.cfg
+rm -rf $HOME/.mackup
+ln -s $HOME/.dotfiles/osx/mackup/apps $HOME/.mackup
+
+mackup restore
+
+# Restore the OmniApps Templates
+read -p "👨🏻‍💻 Please confirm if you wish to restore OmniGraffle 7 Templates (y|N)... " confirm
+
+if [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]];
+  then
+
+       # Warn before restoring OmniGraffle stencils
+       while [[ "$signin" != "y" && "$signin" != "Y" && "$signin" != "yes" && "$signin" != "Yes" && "$signin" != "YES" ]]
+       do
+       read -p "👨🏻‍💻 Please open OmniGraffle 7 at least once before performin this action (y|N)... " signin
+       done
+
+       cp -rf "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
+              "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"
+
+       cp -rf "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
+              "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"
+fi

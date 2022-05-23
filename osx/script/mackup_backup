@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "💾 Backing up application settings with Mackup..."
+
+rm -rf $HOME/.mackup.cfg
+ln -s $HOME/.dotfiles/osx/mackup/mackup.cfg $HOME/.mackup.cfg
+rm -rf $HOME/.mackup
+ln -s $HOME/.dotfiles/osx/mackup/apps $HOME/.mackup
+
+mackup backup
+
+echo "📐 Backing up OmniGroup App's Templates..."
+
+cp -rf "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
+       "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"
+
+cp -rf "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
+       "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"
+
+# echo "🖨 Backing up printer settings with Mackup..."
+
+# sudo cp -rf /etc/cups $HOME/Dropbox/Mackup/Printers
