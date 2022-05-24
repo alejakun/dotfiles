@@ -5,11 +5,8 @@
 
 ## CUSTOM
 
-source ../private/authinfo
-source ./authinfo
-
 # Verify environment
-if [ -z "$STRAP_GIT_EMAIL" ]; then
+if [ -z "$DOTFILES" || -z "$GIT_EMAIL" || -z "$GIT_USER" || -z "$HOMEBREW_GITHUB_API_TOKEN" || -z "$HOMEBREW_BREWFILE" || -z "$STRAP_GIT_EMAIL" || -z "$STRAP_GITHUB_USER" || -z "$STRAP_GITHUB_TOKEN" ]; then
   echo "Please set the enviroment before retrying"
   exit 0
 fi
