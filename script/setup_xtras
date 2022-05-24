@@ -43,7 +43,6 @@ ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
 rm -f $HOME/.zshenv
 ln -s $DOTFILES/zsh/.zshenv $HOME/.zshenv
 
-
 # Setup Power10K Profiles
 rm -f $HOME/.p10k.zsh
 ln -s $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
