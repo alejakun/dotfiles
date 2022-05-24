@@ -62,6 +62,8 @@ brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-pref
 brew 'grep' # Install more recent versions of some OS X tools
 
 # Install some command line utils
+brew 'vim'
+brew 'neovim'
 brew 'tree'
 brew 'wget'
 brew 'tmux'
