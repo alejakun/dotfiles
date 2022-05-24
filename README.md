@@ -23,7 +23,9 @@ Installing CLT for Mac will install the following utilities (as documented [here
 
 To clone the .dotfiles repository you can use the following command:
 
-`git clone git@github.com:alejakun/dotfiles.git .dotfiles`
+```sh
+$ git clone git@github.com:alejakun/dotfiles.git .dotfiles
+```
 
 ## Setting up the environment
 ### Create GitHub Token
@@ -61,6 +63,11 @@ This environment might be added to `.zshenv` or `.bashrc` to automatically load 
 # Running the strap.sh script
 
 In the Terminal window run the command located in the following route: `~/.dotfiles/osx/script/strap.sh`.
+You can also use the following command to run directly from the repository:
+
+```sh
+$ bash -c "$(curl -fsSL raw.github.com/alejakun/dotfiles/master/osx/script/strap.sh)"
+```
 
 If environment's setup is correct the script will perform the following actions:
 
