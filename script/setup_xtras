@@ -57,6 +57,10 @@ ln -s $DOTFILES/ssh/config $HOME/.ssh/config
 
 echo "🖥  Setting up ~/.tmux/config..."
 
+# Installing Spacevim
+
+curl -sLf https://spacevim.org/install.sh | bash
+
 # Setup tmux
 # Further information in: https://github.com/gpakosz/.tmux
 
