@@ -26,6 +26,7 @@ export STRAP_GITHUB_TOKEN=<Strap GitHub Token>
 export STRAP_ISSUES_URL='https://github.com/MikeMcQuaid/strap/issues/new'
 ```
 This environment might be added to `.zshenv` or `.bashrc` to automatically load the values with every session start.
+
 ### Creating a GitHub Token
 
 If you need to create the GitHub Token you can follow [this link](https://github.com/settings/tokens/new?scopes=gist,repo,workflow&description=Homebrew).
@@ -43,6 +44,7 @@ $ bash -c "$(curl -fsSL raw.github.com/alejakun/dotfiles/master/osx/script/strap
 If environment's setup is correct the script will perform the following actions:
 
 * Basic developer setup and hardening of OSX
+
 <!-- ## Installing Command Line Tools for Mac
 
 Among other things it is necessary to have `git` installed in the destination host (not necessary if starting from the strap.sh script as the script will perform the installation as part of it's actions), in case it is not present in the system, it can be installed as part of the Command Line Tools for Mac. To install CLT for Mac without fully installing Xcode there are two options:
@@ -59,6 +61,7 @@ Installing CLT for Mac will install the following utilities (as documented [here
 * gcc
 * git
 ``` -->
+
 * Install of [Homebrew](https://brew.sh/) and basic casks
 * Clone user's GitHub dotfiles repository for user into `~/.dotfiles`
 * Run `Brewfile` as pointed by `$HOMEBREW_BREWFILE`
@@ -74,7 +77,10 @@ Installing CLT for Mac will install the following utilities (as documented [here
 # Running the setup script
 
 In case it is necessary you can independently run the setup script by getting in the `.dotfiles` directory and runnin the following script:
-
 ```sh
 $ bash ~/.dotfiles/script/setup
 ```
+
+# Restoring Mackup settings
+
+Before it is safe to restore Mackup settings it is necessary to sync Mackup directory from Dropbox. Since this requires Dropbox configuration and the hostname is still not setup it is recommended not to configure Dropbox's backup yet, but after the script is fully run.
