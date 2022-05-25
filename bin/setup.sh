@@ -40,14 +40,14 @@ if test "$(uname)" = "Darwin";
     echo " Setting up an Apple System"
 
     # Install macOS Apps & Packages
-    source $DOTFILES/osx/script/brew_install
-    source $DOTFILES/osx/script/mackup_restore
-    source $DOTFILES/script/setup_xtras
+    source ./brew_install
+    source ./mackup_restore
+    source ./setup_xtras
 
     chsh -s /usr/local/bin/zsh
 
     # Set macOS preferences - we will run this last because this will reload the shell
-    source ./osx/osx_preferences
+    source ./prefs_macos
   else
 
     echo "🐧 Setting up a Linux System" 
