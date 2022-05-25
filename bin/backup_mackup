@@ -4,10 +4,10 @@ echo "💾  Backing up application settings with Mackup..."
 
 # Ensure .mackup.cfg is using the .dotfiles version
 rm -rf $HOME/.mackup.cfg
-ln -s $HOME/.dotfiles/osx/mackup/mackup.cfg $HOME/.mackup.cfg
+ln -s $DOTFILES/macos/mackup/mackup.cfg $HOME/.mackup.cfg
 # Ensure .mackup (mackup xtra deifnitions) are using the .dotfiles version
 rm -rf $HOME/.mackup
-ln -s $HOME/.dotfiles/osx/mackup/apps $HOME/.mackup
+ln -s $DOTFILES/macos/mackup/apps $HOME/.mackup
 
 mackup backup
 

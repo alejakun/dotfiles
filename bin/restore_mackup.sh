@@ -7,9 +7,9 @@ echo "🚛  Moving Mackup configuration files"
 
 # Symlink the Mackup config file to the home directory
 rm -rf $HOME/.mackup.cfg
-ln -s $HOME/.dotfiles/osx/mackup/mackup.cfg $HOME/.mackup.cfg
+ln -s $DOTFILES/macos/mackup/mackup.cfg $HOME/.mackup.cfg
 rm -rf $HOME/.mackup
-ln -s $HOME/.dotfiles/osx/mackup/apps $HOME/.mackup
+ln -s $DOTFILES/macos/mackup/apps $HOME/.mackup
 
 mackup restore
 
