@@ -42,6 +42,7 @@ elif test "$(uname)" = "Linux";
 
     # Make ZSH the default shell environment
     source ./brew_install
+    source ./apt_install
     
     source ./setup_zsh
     chsh -s $(which zsh)
