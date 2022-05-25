@@ -42,7 +42,7 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Docker
-#alias docker-composer="docker-compose"
+alias dcupdate="docker-compose build --pull && docker-compose pull && docker-compose up -d --remove-orphans && docker image prune -f"
 
 # Git
 alias gst="git status"
