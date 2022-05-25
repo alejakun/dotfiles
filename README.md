@@ -39,7 +39,7 @@ If you don't have one already you should create the Strap.sh GitHub Token [here]
 
 To run the script directly from the dotfiles repository you can use the following command:
 ```sh
-$ bash -c "$(curl -fsSL raw.github.com/alejakun/dotfiles/master/osx/script/strap.sh)"
+$ bash -c "$(curl -fsSL raw.github.com/alejakun/dotfiles/master/bin/strap.sh)"
 ```
 If environment's setup is correct the script will perform the following actions:
 
