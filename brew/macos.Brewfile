@@ -14,72 +14,8 @@ tap 'homebrew/bundle'
 cask_args appdir: '/Applications'
 
 ###############################
-## Basic Setup               ##
-###############################
-
-### Shell
-brew 'zsh'
-brew 'bash'
-
-### Oh-My-Zsh themes and plugins
-tap 'romkatv/powerlevel10k'
-brew 'powerlevel10k'
-brew 'zsh-autosuggestions'
-brew 'zsh-syntax-highlighting'
-# brew 'zsh-completions' # To enable check: https://formulae.brew.sh/formula/zsh-completions#default
-
-### Public Fonts
-cask 'font-inter'
-cask 'font-lato'
-cask 'font-iosevka'
-cask 'font-iosevka-nerd-font' # iosevka w/ nerd font support
-# cask 'font-hack-nerd-font' # https://github.com/ryanoasis/nerd-fonts
-
-### Personal Collection
-cask 'alejakun/cask/font-agrevuecyr-roman'
-cask 'alejakun/cask/font-bankgothic-bold'
-cask 'alejakun/cask/font-bankgothic-regular'
-cask 'alejakun/cask/font-bebas-neue-pro'
-cask 'alejakun/cask/font-bebas-neue'
-cask 'alejakun/cask/font-bebas'
-cask 'alejakun/cask/font-benton-sans'
-cask 'alejakun/cask/font-caviar-dreams'
-cask 'alejakun/cask/font-cc-ultimatum'
-cask 'alejakun/cask/font-fette-engschrift'
-cask 'alejakun/cask/font-ff-good-pro-cond'
-cask 'alejakun/cask/font-gotham'
-cask 'alejakun/cask/font-harry-p'
-cask 'alejakun/cask/font-marvel'
-cask 'alejakun/cask/font-meslolgs-nf'
-cask 'alejakun/cask/font-myriad-pro'
-cask 'alejakun/cask/font-neoprint-m319'
-cask 'alejakun/cask/font-rubber-stamp'
-cask 'alejakun/cask/font-top-secret'
-
-### Other basic utilities
-brew 'coreutils' # Install GNU core utilities (those that come with OS X are outdated)
-brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew 'grep' # Install more recent versions of some OS X tools
-
-# Install some command line utils
-brew 'vim'
-brew 'neovim'
-brew 'tree'
-brew 'wget'
-brew 'tmux'
-brew 'midnight-commander'
-
-###############################
 ## Basic Tools               ##
 ###############################
-
-tap 'buo/cask-upgrade' # https://github.com/buo/homebrew-cask-upgrade
-
-### Github Utilities
-brew 'git'
-brew 'hub'
-tap 'microsoft/git'
-cask 'microsoft/git/git-credential-manager-core' # Requieres Password # https://github.com/GitCredentialManager/git-credential-manager
 
 ### Other Basic
 cask 'visual-studio-code'
@@ -90,26 +26,6 @@ cask 'google-chrome'
 ## Software Development      ##
 ###############################
 
-### Scripting & Programming
-brew 'awk'
-brew 'perl'
-brew 'gnu-sed'
-
-### AWS
-# brew 'awscli'
-
-### NodeJS
-brew 'node'
-
-### PHP
-# brew 'homebrew/php/php70', args: ['with-debug', 'without-apache']
-
-### Java
-# brew 'java'
-brew 'openjdk@8'
-# brew 'openjdk@11'
-# brew 'openjdk@17'
-
 ### Text Editors / IDE's
 cask 'sublime-text'
 # cask 'atom'
@@ -117,7 +33,6 @@ cask 'sublime-text'
 ### Containers & Virtualization
 # cask 'virtualbox'
 # cask 'virtualbox-extension-pack'
-# cask 'docker'
 # cask 'vagrant'
 
 #################################
@@ -147,17 +62,12 @@ cask 'iterm2'
 ###############################
 
 ### System Utilities
+brew 'mas'
+brew 'trash'
 brew 'defaultbrowser'
 brew 'switchaudio-osx'
-brew 'lcdf-typetools'
-brew 'fontconfig'
 tap 'smudge/smudge'
 brew 'smudge/smudge/nightlight' # https://github.com/smudge/nightlight
-
-brew 'mas'
-brew 'mackup'
-brew 'trash'
-brew 'rename'
 
 ### Quicklook
 cask 'qlcolorcode'
@@ -167,7 +77,7 @@ cask 'quicklook-csv'
 cask 'qlstephen'
 cask 'qlimagesize'
 cask 'qlvideo' # Requieres Password
-# cask 'apparency'
+cask 'apparency'
 
 ### Apps
 cask 'authy'

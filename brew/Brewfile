@@ -1,0 +1,118 @@
+# Formulaes list: https://formulae.brew.sh/cask/
+# To fresh up the information of installed casks:
+# brew list
+# brew list --cask
+# mas list
+
+### Main Taps
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/bundle'
+
+### Make sure apps get installed in system Applications dir
+cask_args appdir: '/Applications'
+
+###############################
+## Basic Setup               ##
+###############################
+
+### Shell
+brew 'zsh'
+brew 'bash'
+
+### Oh-My-Zsh themes and plugins
+tap 'romkatv/powerlevel10k'
+brew 'powerlevel10k'
+brew 'zsh-autosuggestions'
+brew 'zsh-syntax-highlighting'
+# brew 'zsh-completions' # To enable check: https://formulae.brew.sh/formula/zsh-completions#default
+
+### Public Fonts
+cask 'font-inter'
+cask 'font-lato'
+cask 'font-iosevka'
+cask 'font-iosevka-nerd-font' # iosevka w/ nerd font support
+# cask 'font-hack-nerd-font' # https://github.com/ryanoasis/nerd-fonts
+
+### Personal Collection
+tap 'alejakun/cask'
+cask 'alejakun/cask/font-agrevuecyr-roman'
+cask 'alejakun/cask/font-bankgothic-bold'
+cask 'alejakun/cask/font-bankgothic-regular'
+cask 'alejakun/cask/font-bebas-neue-pro'
+cask 'alejakun/cask/font-bebas-neue'
+cask 'alejakun/cask/font-bebas'
+cask 'alejakun/cask/font-benton-sans'
+cask 'alejakun/cask/font-caviar-dreams'
+cask 'alejakun/cask/font-cc-ultimatum'
+cask 'alejakun/cask/font-fette-engschrift'
+cask 'alejakun/cask/font-ff-good-pro-cond'
+cask 'alejakun/cask/font-gotham'
+cask 'alejakun/cask/font-harry-p'
+cask 'alejakun/cask/font-marvel'
+cask 'alejakun/cask/font-meslolgs-nf'
+cask 'alejakun/cask/font-myriad-pro'
+cask 'alejakun/cask/font-neoprint-m319'
+cask 'alejakun/cask/font-rubber-stamp'
+cask 'alejakun/cask/font-top-secret'
+
+### Other basic utilities
+brew 'coreutils' # Install GNU core utilities (those that come with OS X are outdated)
+brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+brew 'grep' # Install more recent versions of some OS X tools
+
+# Install some command line utils
+brew 'vim'
+brew 'neovim'
+brew 'tree'
+brew 'wget'
+brew 'tmux'
+brew 'midnight-commander'
+
+### Font Utilities
+brew 'lcdf-typetools'
+brew 'fontconfig'
+
+### System Utilities
+brew 'mackup'
+brew 'rename'
+
+###############################
+## Basic Tools               ##
+###############################
+
+tap 'buo/cask-upgrade' # https://github.com/buo/homebrew-cask-upgrade
+
+### Github Utilities
+brew 'git'
+brew 'hub'
+tap 'microsoft/git'
+cask 'microsoft/git/git-credential-manager-core' # Requieres Password # https://github.com/GitCredentialManager/git-credential-manager
+
+###############################
+## Software Development      ##
+###############################
+
+### Scripting & Programming
+brew 'awk'
+brew 'perl'
+brew 'gnu-sed' , args: ['with-default-names']
+
+### AWS
+# brew 'awscli'
+
+### NodeJS
+# brew 'node'
+
+### PHP
+# brew 'homebrew/php/php70', args: ['with-debug', 'without-apache']
+
+### Java
+# brew 'java'
+brew 'openjdk@8'
+# brew 'openjdk@11'
+# brew 'openjdk@17'
+
+### Containers & Virtualization
+# cask 'docker'
