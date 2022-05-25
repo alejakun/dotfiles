@@ -27,10 +27,19 @@ echo "🅰️  Installing Oh My Zsh fonts"
 if test "$(uname)" = "Darwin";
   then
     #MacOS
+
+    # Powerline Fonts
     git clone --depth=1 https://github.com/powerline/fonts.git $DOTFILES/tmp/fonts
     cd $DOTFILES/tmp/fonts
     ./install.sh
     cd - && rm -rf $DOTFILES/tmp/fonts
+
+    # Nerd Fonts    
+    git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+    cd nerd-fonts
+    ./install.sh
+    cd ..
+    rm -rf nerd-fonts
 elif test "$(uname)" = "Linux";
 then
     #Linux
