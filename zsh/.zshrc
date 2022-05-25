@@ -21,7 +21,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history common-aliases zsh-autocomplete)
+# For more plugins check: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
+plugins=(history dirhistory common-aliases zsh-autocomplete sudo git tmux docker docker-compose macos vscode )
 
 source $ZSH/oh-my-zsh.sh
 
