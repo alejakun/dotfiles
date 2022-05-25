@@ -15,7 +15,7 @@ if test "$(uname)" = "Darwin";
     then
         #MacOS
         rm -rf $HOME/.gitconfig.local
-        ln -s $DOTFILES/git/mac.gitconfig.local $HOME/.gitconfig.local
+        ln -s $DOTFILES/git/macos.gitconfig.local $HOME/.gitconfig.local
     # # TODO: Add .gitconfig.local for Linux
     # elif test "$(uname)" = "Linux";
     # then
