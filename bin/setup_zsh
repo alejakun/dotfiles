@@ -7,7 +7,7 @@ if ! $(which omz) > /dev/null; then
 
     echo "💲  Installing Oh My Zsh"
 
-    #  Install Oh My Zsh
+    # Install Oh My Zsh
     /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
 else
     echo "💲  Looks like Oh My Zsh is already installed!"
@@ -26,7 +26,7 @@ echo "🅰️  Installing Oh My Zsh fonts"
 
 if test "$(uname)" = "Darwin";
   then
-    #MacOS
+    # MacOS
 
     # Powerline Fonts
     git clone --depth=1 https://github.com/powerline/fonts.git $DOTFILES/tmp/fonts
@@ -42,10 +42,10 @@ if test "$(uname)" = "Darwin";
     rm -rf nerd-fonts
 elif test "$(uname)" = "Linux";
 then
-    #Linux
+    # Linux
     sudo apt-get install fonts-powerline
 else
-    #Other
+    # Other
     echo "$(uname) is not supported" >&2
     exit 1
 fi

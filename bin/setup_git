@@ -12,18 +12,18 @@ ln -s $DOTFILES/git/.gitignore $HOME/.gitignore
 
 # Install .gitconfig.local
 if test "$(uname)" = "Darwin";
-    then
-        #MacOS
-        rm -rf $HOME/.gitconfig.local
-        ln -s $DOTFILES/git/macos.gitconfig.local $HOME/.gitconfig.local
-    # # TODO: Add .gitconfig.local for Linux
-    # elif test "$(uname)" = "Linux";
-    # then
-    #     #Linux
-    #     echo "No .gitfonig.local for System"
-    #     exit 0
-    # else
-    #     #Other
-    #     echo "$(uname) is not supported" >&2
-    #     exit 1
+then
+    # MacOS
+    rm -rf $HOME/.gitconfig.local
+    ln -s $DOTFILES/git/macos.gitconfig.local $HOME/.gitconfig.local
+# TODO: Add .gitconfig.local for Linux
+# elif test "$(uname)" = "Linux";
+# then
+#     # Linux
+#     echo "No .gitfonig.local for System"
+#     exit 0
+# else
+#     # Other
+#     echo "$(uname) is not supported" >&2
+#     exit 1
 fi 

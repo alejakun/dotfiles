@@ -14,6 +14,8 @@ keep_alive_sudo
 if test "$(uname)" = "Darwin";
   then
 
+    # MacOS
+
     echo "🍎  Setting up an Apple System"
 
     # Install macOS Apps & Packages
@@ -34,6 +36,8 @@ if test "$(uname)" = "Darwin";
     
 elif test "$(uname)" = "Linux";
 
+    # Linux
+
     echo "🐧 Setting up a Linux System" 
 
     # Make ZSH the default shell environment
@@ -48,6 +52,7 @@ elif test "$(uname)" = "Linux";
     source ./setup_vim
 
 else
+    # Other
     echo "$(uname) is not supported" >&2
     exit 1
 fi
