@@ -1,0 +1,26 @@
+#!/bin/sh
+
+wait_for_confirmation() {
+
+    message="💻  $1 (y|N)... "
+
+    while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]]
+    do
+        read -p "$message" confirm
+    done
+
+}
+
+keep_alive_sudo() {
+
+    # Ask for the administrator password upfront
+    sudo -v
+    # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+}
+
+open_app() {
+
+    open -a $1
+}

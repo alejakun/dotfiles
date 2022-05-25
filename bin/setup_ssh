@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "🖥  Setting up SSH..."
+
+echo "🚛  Moving SSH configuration files"
+
+# Removes ~/.ssh/config if it exists and symlinks the .ssh/config file from the .dotfiles
+mkdir -p $HOME/.ssh
+rm -f $HOME/.ssh/config
+ln -s $DOTFILES/ssh/config $HOME/.ssh/config

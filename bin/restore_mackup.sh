@@ -1,10 +1,9 @@
 #!/bin/sh
 
 # Warn before mackup restoration
-while [[ "$signin" != "y" && "$signin" != "Y" && "$signin" != "yes" && "$signin" != "Yes" && "$signin" != "YES" ]]
-do
-    read -p "👨🏻‍💻 Confirm Dropbox Mackup folder is already synched (y|N)... " signin
-done
+wait_for_confirmation "Confirm Dropbox Mackup folder is already synched"
+
+echo "🚛  Moving Mackup configuration files"
 
 # Symlink the Mackup config file to the home directory
 rm -rf $HOME/.mackup.cfg
@@ -21,13 +20,9 @@ if [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm
   then
 
        # Warn before restoring OmniGraffle stencils
-       while [[ "$signin" != "y" && "$signin" != "Y" && "$signin" != "yes" && "$signin" != "Yes" && "$signin" != "YES" ]]
-       do
-       read -p "👨🏻‍💻 Please open OmniGraffle 7 at least once before performin this action (y|N)... " signin
-       done
-
-       cp -rf "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
-              "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"
+       open_app "OmniGraffle"
+       sleep 2
+       killall "OmniGraffle"
 
        cp -rf "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
               "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"

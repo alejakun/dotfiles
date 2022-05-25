@@ -1,18 +1,40 @@
 #!/bin/sh
 
-echo "💻 Setting up your Mac..."
+# Check for Homebrew and install if we don't have it
+if test ! $(which brew); then
+
+    echo "🍺 Installing Homebrew"
+
+    # Install Homebrew for each OS type
+    if test "$(uname)" = "Darwin";
+    then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    elif test "$(uname)" = "Linux";
+    then
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+    else
+        echo "$(uname) is not supported" >&2
+        exit 1
+    fi 
+else
+    echo "🍺  Looks like Homebrew is already installed!"
+fi
+
+# Perform OS specific actions
+if  test "$(uname)" = "Darwin";
+then
+    # Warn about signing into App Store to install mas apps
+
+    echo "🛍  Sign-into App Store"
+
+    open_app "App Store"
+    wait_for_confirmation "Confirm you have logged in AppStore"
+fi
 
 # Update Homebrew recipes
 brew update
 brew upgrade
 
-# Warn about signing in in App Store before proceeding to installation
-while [[ "$signin" != "y" && "$signin" != "Y" && "$signin" != "yes" && "$signin" != "Yes" && "$signin" != "YES" ]]
-do
-    read -p "👨🏻‍💻 Confirm you have Signed-in Apple App Store before proceeding (y|N)... " signin
-done
-
 # Install all our dependencies with bundle (See Brewfile)
-
 ## TODO: Handle multiple brewfiles depending on host
 brew bundle --file="$HOMEBREW_BREWFILE"
