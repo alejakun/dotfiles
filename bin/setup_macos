@@ -730,7 +730,7 @@ cd -
 confirm=
 while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]]
 do
-	echo "👨🏻‍💻 Remeber to update in iTerm2 Settings > Profiles > Text > Fonts (MesloLGS NF, PowerlineSymbols, Iosevka Nerd Font)"
+	echo "👨🏻‍💻 Remeber to update in iTerm2 Settings > Profiles > Text > Fonts (MesloLGS NF, Iosevka Nerd Font)"
 	echo "👨🏻‍💻 Remeber to update in iTerm2 Settings > Profiles > Colors > Solarized Dark - Patched"
     read -p "👨🏻‍💻 Remeber to update in iTerm2 Settings > Profiles > Keys > Key Mappings > Natural Text Editing (y|N)... " confirm
 done
