@@ -2,12 +2,30 @@
 
 wait_for_confirmation() {
 
-    message="💻  $1 (y|N)... "
+    message="👍 $1 (y|N)... "
 
     while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]]
     do
         read -p "$message" confirm
     done
+
+}
+
+ask_for_confirmation_input() {
+
+    message="❓ $1 (y|N)... "
+
+    while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" &&
+             "$confirm" != "n" && "$confirm" != "N" && "$confirm" != "no" && "$confirm" != "No" && "$confirm" != "NO" ]]
+    do
+        read -p "$message" confirm
+    done
+
+    if [[ "$confirm" == "y" || "$confirm" == "Y" || "$confirm" == "yes" || "$confirm" == "Yes" || "$confirm" == "YES" ]]; then
+        confirm=true
+    else
+        confirm=false
+    fi
 
 }
 
@@ -22,5 +40,5 @@ keep_alive_sudo() {
 
 open_app() {
 
-    open -a $1
+    open -a "$1"
 }

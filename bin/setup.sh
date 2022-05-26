@@ -12,11 +12,11 @@ echo "🖥  Setting up your System..."
 keep_alive_sudo
 
 if test "$(uname)" = "Darwin";
-  then
+then
 
     # MacOS
 
-    echo "🍎  Setting up an Apple System"
+    echo "🍎 Setting up an Apple System"
 
     # Install macOS Apps & Packages
     source ./brew_install
@@ -35,7 +35,7 @@ if test "$(uname)" = "Darwin";
     source ./setup_macos
     
 elif test "$(uname)" = "Linux";
-
+then
     # Linux
 
     echo "🐧 Setting up a Linux System" 
