@@ -2,6 +2,7 @@
 
 wait_for_confirmation() {
 
+    confirm=
     message="👍 $1 (y|N)... "
 
     while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]]
@@ -9,12 +10,11 @@ wait_for_confirmation() {
         read -p "$message" confirm
     done
 
-    confirm=true
-
 }
 
 ask_for_confirmation_input() {
 
+    confirm=
     message="❓ $1 (y|N)... "
 
     while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" &&
