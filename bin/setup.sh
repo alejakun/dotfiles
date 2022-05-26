@@ -29,6 +29,7 @@ then
     source ./setup_ssh
     source ./setup_tmux
     source ./setup_vim
+    source ./setup_terminal
 
     # Set macOS preferences - we will run this last because this will reload the shell
     # and reboot the sytem
