@@ -5,15 +5,15 @@ echo "🖥  Setting up Zsh..."
 # Check for Oh My Zsh and install if we don't have it
 if $(which omz) > /dev/null; then
 
-    echo "💲  Installing Oh My Zsh"
+    echo "💲 Installing Oh My Zsh"
 
     # Install Oh My Zsh
     /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
 else
-    echo "💲  Looks like Oh My Zsh is already installed!"
+    echo "💲 Looks like Oh My Zsh is already installed!"
 fi
 
-echo "🔌  Installing Oh My Zsh themes and plugins"
+echo "🔌 Installing Oh My Zsh themes and plugins"
 
 # OhMyZsh Plugins
 echo "🎨 Installing Powerlevel10k"
@@ -28,7 +28,7 @@ else
     fi
 fi
 
-echo "🔌  Installing Zsh-Autocomplete"
+echo "🔌 Installing Zsh-Autocomplete"
 if [ ! -d "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete" ]; then
     git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
 else
