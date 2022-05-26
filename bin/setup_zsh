@@ -3,7 +3,7 @@
 echo "🖥  Setting up Zsh..."
 
 # Check for Oh My Zsh and install if we don't have it
-if ! $(which omz) > /dev/null; then
+if $(which omz) > /dev/null; then
 
     echo "💲  Installing Oh My Zsh"
 
@@ -13,11 +13,32 @@ else
     echo "💲  Looks like Oh My Zsh is already installed!"
 fi
 
-echo "🔌  Installing Oh My Zsh plugins"
+echo "🔌  Installing Oh My Zsh themes and plugins"
 
 # OhMyZsh Plugins
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k
-git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete
+echo "🎨 Installing Powerlevel10k"
+if [ ! -d "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k" ]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k"
+else
+    ask_for_confirmation_input "Do you wish to replace existing installation?"
+    echo "Confirm is: $confirm"
+    if test $confirm = true; then
+        rm -rf "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k"
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k"
+    fi
+fi
+
+echo "🔌  Installing Zsh-Autocomplete"
+if [ ! -d "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete" ]; then
+    git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
+else
+    ask_for_confirmation_input "Do you wish to replace existing installation for plugin zsh-autocomplete?"
+    echo "Confirm is: $confirm"
+    if test $confirm = true; then
+        rm -rf "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
+        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
+    fi
+fi
 
 echo "🅰️  Installing Oh My Zsh fonts"
 
@@ -25,21 +46,20 @@ echo "🅰️  Installing Oh My Zsh fonts"
 # https://github.com/powerline/fonts
 
 if test "$(uname)" = "Darwin";
-  then
+then
     # MacOS
 
     # Powerline Fonts
-    git clone --depth=1 https://github.com/powerline/fonts.git $DOTFILES/tmp/fonts
-    cd $DOTFILES/tmp/fonts
+    git clone --depth=1 https://github.com/powerline/fonts.git "$DOTFILES/tmp/fonts/powerline"
+    cd "$DOTFILES/tmp/fonts/powerline"
     ./install.sh
-    cd - && rm -rf $DOTFILES/tmp/fonts
+    cd - && rm -rf "$DOTFILES/tmp/fonts/powerline"
 
-    # Nerd Fonts    
-    git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
-    cd nerd-fonts
+    # Nerd Fonts
+    git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git "$DOTFILES/tmp/fonts/nerd-fonts"
+    cd "$DOTFILES/tmp/fonts/nerd-fonts"
     ./install.sh
-    cd ..
-    rm -rf nerd-fonts
+    cd - && rm -rf "$DOTFILES/tmp/fonts/nerd-fonts"
 elif test "$(uname)" = "Linux";
 then
     # Linux
@@ -50,14 +70,14 @@ else
     exit 1
 fi
 
-echo "🚛  Moving Zsh configuration files"
+echo "🚛 Moving Zsh configuration files"
 
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
-rm -f $HOME/.zshrc
-ln -s $DOTFILES/zsh/.zshrc $HOME/.zshrc
-rm -f $HOME/.zshenv
-ln -s $DOTFILES/zsh/.zshenv $HOME/.zshenv
+rm -f "$HOME/.zshrc"
+ln -s "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
+rm -f "$HOME/.zshenv"
+ln -s "$DOTFILES/zsh/.zshenv" "$HOME/.zshenv"
 
 # Setup Power10K Profiles
-rm -f $HOME/.p10k.zsh
-ln -s $DOTFILES/zsh/.p10k.zsh $HOME/.p10k.zsh
+rm -f "$HOME/.p10k.zsh"
+ln -s "$DOTFILES/zsh/.p10k.zsh" "$HOME/.p10k.zsh"
