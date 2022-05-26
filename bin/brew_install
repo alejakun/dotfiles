@@ -20,7 +20,7 @@ if test ! $(which brew); then
         exit 1
     fi 
 else
-    echo "🍺  Looks like Homebrew is already installed!"
+    echo "🍺 Looks like Homebrew is already installed!"
 fi
 
 # Perform OS specific actions
@@ -31,7 +31,7 @@ then
     echo "🛍  Sign-into App Store"
 
     open_app "App Store"
-    wait_for_confirmation "Confirm you have logged in AppStore"
+    wait_for_confirmation "Confirm you have logged into AppStore"
 fi
 
 # Update Homebrew recipes
@@ -40,10 +40,15 @@ brew upgrade
 
 # Install all our dependencies with bundle (See Brewfile)
 ## TODO: Handle multiple brewfiles depending on host
-brew bundle --file="$HOMEBREW_BREWFILE"
+if test -e "$HOMEBREW_BREWFILE"; then
+    brew bundle --file="$HOMEBREW_BREWFILE"
+fi
 
 if test "$(uname)" = "Darwin";
 then
     # MacOS
-    brew bundle --file="$HOMEBREW_BREWFILE_MACOS
+    if test -e "$HOMEBREW_BREWFILE_MACOS"; then
+        brew bundle --file="$HOMEBREW_BREWFILE_MACOS"
+    fi
+    
 fi
