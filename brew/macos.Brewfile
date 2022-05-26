@@ -76,7 +76,7 @@ cask 'quicklook-json'
 cask 'quicklook-csv'
 cask 'qlstephen'
 cask 'qlimagesize'
-cask 'qlvideo' # Requieres Password
+cask 'qlvideo'
 cask 'apparency'
 
 ### Apps
@@ -98,9 +98,9 @@ cask 'doxie'
 # cask 'onedrive'
 
 ### OSX Utilities
-cask 'tuxera-ntfs' # Requieres Password
+cask 'tuxera-ntfs'
 cask 'hazel'
-cask 'alfred'
+# cask 'alfred'
 cask 'atext'
 cask 'bartender'
 # cask 'ubar'
@@ -115,19 +115,19 @@ cask 'turbo-boost-switcher'
 # cask 'fing' # Network Monitor
 
 ### Office Tools
-cask 'microsoft-office' # Requieres Password
+cask 'microsoft-office'
 cask 'postbox'
 cask 'franz'
 cask 'telegram'
 # cask 'skype'
 # cask 'slack'
-cask 'zoom' # Requieres Password
+cask 'zoom'
 cask 'webex'
 # cask 'webex-meetings'
-cask 'microsoft-teams' # Requieres Password
+cask 'microsoft-teams'
 cask 'anydesk'
 # cask 'vnc-viewer'
-cask 'teamviewer' # Requieres Password
+cask 'teamviewer'
 cask 'bitrix24' # BWR
 
 ### Multimedia

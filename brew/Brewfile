@@ -14,12 +14,101 @@ tap 'homebrew/bundle'
 cask_args appdir: '/Applications'
 
 ###############################
-## Basic Setup               ##
+## GNU Tools                 ##
 ###############################
 
-### Shell
-brew 'zsh'
+# As documented in: https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
+# and: https://gist.github.com/xuhdev/8b1b16fb802f6870729038ce3789568f
+# Install GNU core utilities (those that come with OS X are outdated)
+
+# Core GNU
+brew 'coreutils'
+
+# GNU key commands
+brew 'binutils'
+brew 'diffutils'
+brew 'ed'
+brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+brew 'gawk'
+brew 'gnu-indent'
+brew 'gnu-sed'
+brew 'gnu-tar'
+brew 'gnu-which'
+brew 'gnutls'
+brew 'grep'
+brew 'gzip'
+brew 'screen'
+brew 'watch'
+brew 'wdiff'
+brew 'wget'
+
+# OS X ships a GNU version, but too old
 brew 'bash'
+# brew 'emacs'
+# brew 'gdb'  # gdb requires further actions to make it work. See `brew info gdb`.
+brew 'gpatch'
+# brew 'm4'
+brew 'make'
+brew 'nano'
+
+# Other commands (non-GNU)
+brew 'file-formula'
+brew 'git'
+brew 'less'
+# brew 'openssh'
+# brew 'perl'
+brew 'python@3.9'
+brew 'rsync'
+# brew 'svn'
+brew 'unzip'
+# brew 'vim'
+# brew 'macvim'
+brew 'zsh'
+
+# Other commands (personal)
+# brew 'awk'
+brew 'neovim'
+brew 'tree'
+brew 'tmux'
+# brew 'rename'
+brew 'midnight-commander'
+brew 'lcdf-typetools' # Font Utilities
+brew 'fontconfig' # Font Utilities
+
+###############################
+## Software Development      ##
+###############################
+
+### Github Utilities
+brew 'hub'
+tap 'microsoft/git'
+cask 'microsoft/git/git-credential-manager-core' # Requieres Password # https://github.com/GitCredentialManager/git-credential-manager
+
+### AWS
+# brew 'awscli'
+
+### NodeJS
+# brew 'node'
+
+### PHP
+# brew 'homebrew/php/php70', args: ['with-debug', 'without-apache']
+
+### Java
+# brew 'java'
+brew 'openjdk@8'
+# brew 'openjdk@11'
+# brew 'openjdk@17'
+
+### Containers & Virtualization
+# cask 'docker'
+
+###############################
+## Other Tools               ##
+###############################
+
+### System Utilities
+brew 'mackup'
+tap 'buo/cask-upgrade' # https://github.com/buo/homebrew-cask-upgrade
 
 ### Oh-My-Zsh themes and plugins
 tap 'romkatv/powerlevel10k'
@@ -27,6 +116,10 @@ brew 'powerlevel10k'
 brew 'zsh-autosuggestions'
 brew 'zsh-syntax-highlighting'
 # brew 'zsh-completions' # To enable check: https://formulae.brew.sh/formula/zsh-completions#default
+
+###############################
+## Fonts                     ##
+###############################
 
 ### Public Fonts
 cask 'font-inter'
@@ -56,63 +149,3 @@ cask 'alejakun/cask/font-myriad-pro'
 cask 'alejakun/cask/font-neoprint-m319'
 cask 'alejakun/cask/font-rubber-stamp'
 cask 'alejakun/cask/font-top-secret'
-
-### Other basic utilities
-brew 'coreutils' # Install GNU core utilities (those that come with OS X are outdated)
-brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew 'grep' # Install more recent versions of some OS X tools
-
-# Install some command line utils
-brew 'vim'
-brew 'neovim'
-brew 'tree'
-brew 'wget'
-brew 'tmux'
-brew 'midnight-commander'
-
-### Font Utilities
-brew 'lcdf-typetools'
-brew 'fontconfig'
-
-### System Utilities
-brew 'mackup'
-brew 'rename'
-
-###############################
-## Basic Tools               ##
-###############################
-
-tap 'buo/cask-upgrade' # https://github.com/buo/homebrew-cask-upgrade
-
-### Github Utilities
-brew 'git'
-brew 'hub'
-tap 'microsoft/git'
-cask 'microsoft/git/git-credential-manager-core' # Requieres Password # https://github.com/GitCredentialManager/git-credential-manager
-
-###############################
-## Software Development      ##
-###############################
-
-### Scripting & Programming
-brew 'awk'
-brew 'perl'
-brew 'gnu-sed' , args: ['with-default-names']
-
-### AWS
-# brew 'awscli'
-
-### NodeJS
-# brew 'node'
-
-### PHP
-# brew 'homebrew/php/php70', args: ['with-debug', 'without-apache']
-
-### Java
-# brew 'java'
-brew 'openjdk@8'
-# brew 'openjdk@11'
-# brew 'openjdk@17'
-
-### Containers & Virtualization
-# cask 'docker'
