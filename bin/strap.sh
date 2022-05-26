@@ -6,9 +6,20 @@
 ## CUSTOM
 
 # Verify environment
-if [[ -z "$DOTFILES" || -z "$GIT_EMAIL" || -z "$GIT_USER" || -z "$HOMEBREW_GITHUB_API_TOKEN" || -z "$HOMEBREW_BREWFILE" || -z "$STRAP_GIT_EMAIL" || -z "$STRAP_GITHUB_USER" || -z "$STRAP_GITHUB_TOKEN" ]] ; then
+if [ -z "$DOTFILES" ] || [ -z "$GIT_EMAIL" ] || [ -z "$GIT_USER" ] || [ -z "$HOMEBREW_GITHUB_API_TOKEN" ] || [ -z "$HOMEBREW_BREWFILE" ] || [ -z "$STRAP_GIT_EMAIL" ] || [ -z "$STRAP_GITHUB_USER" ] || [ -z "$STRAP_GITHUB_TOKEN" ]; then
+
+  echo "DOTFILES: $DOTFILES"
+  echo "GIT_EMAIL: $GIT_EMAIL"
+  echo "GIT_USER: $GIT_USER"
+  echo "HOMEBREW_GITHUB_API_TOKEN: $HOMEBREW_GITHUB_API_TOKEN"
+  echo "HOMEBREW_BREWFILE: $HOMEBREW_BREWFILE"
+  echo "HOMEBREW_BREWFILE_MACOS: $HOMEBREW_BREWFILE_MACOS"
+  echo "STRAP_GIT_EMAIL: $STRAP_GIT_EMAIL"
+  echo "STRAP_GITHUB_USER: $STRAP_GITHUB_USER"
+  echo "STRAP_GITHUB_TOKEN: $STRAP_GITHUB_TOKEN"
+
   echo "Please set the enviroment before retrying"
-  exit 0
+  exit 1
 fi
 
 ## END_CUSTOM
