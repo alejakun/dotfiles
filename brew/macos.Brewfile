@@ -195,6 +195,14 @@ mas "WireGuard", id:1451685025
 mas "Lightshot Screenshot", id:526298438
 mas "Coin Tick", id:1141688067
 
+###############################
+## Screensavers              ##
+###############################
+
+# TODO: Add custom screensavers as casks
+# cask 'aerial'
+
+
 # # Unavailable Apps
 
 # # - Amphetamine Enhancer: https://github.com/x74353/Amphetamine-Enhancer/
