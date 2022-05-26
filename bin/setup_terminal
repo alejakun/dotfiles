@@ -4,7 +4,6 @@ echo "🖥  Setting up Terminal..."
 
 echo "🚛 Opening themes"
 
-# Removes ~/.ssh/config if it exists and symlinks the .ssh/config file from the .dotfiles
 cd "$DOTFILES/macos/themes/"
 open *.terminal
 cd -
