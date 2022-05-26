@@ -2,20 +2,20 @@
 
 echo "🖥  Setting up git..."
 
-echo "🚛  Moving Git configuration files"
+echo "🚛 Moving Git configuration files"
 
 # Setting up global .gitconfig and .gitignore definitions
-rm -rf $HOME/.gitconfig
-ln -s $DOTFILES/git/.gitconfig $HOME/.gitconfig
-rm -rf $HOME/.gitignore
-ln -s $DOTFILES/git/.gitignore $HOME/.gitignore
+rm -rf "$HOME/.gitconfig"
+ln -s "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
+rm -rf "$HOME/.gitignore"
+ln -s "$DOTFILES/git/.gitignore" "$HOME/.gitignore"
 
 # Install .gitconfig.local
 if test "$(uname)" = "Darwin";
 then
     # MacOS
-    rm -rf $HOME/.gitconfig.local
-    ln -s $DOTFILES/git/macos.gitconfig.local $HOME/.gitconfig.local
+    rm -rf "$HOME/.gitconfig.local"
+    ln -s "$DOTFILES/git/macos.gitconfig.local" "$HOME/.gitconfig.local"
 # TODO: Add .gitconfig.local for Linux
 # elif test "$(uname)" = "Linux";
 # then

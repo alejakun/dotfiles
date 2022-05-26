@@ -4,5 +4,5 @@ echo "🖥  Setting up Vim..."
 
 # Installing Spacevim from: https://spacevim.org
 
-echo "📦  Installing SpaceVim"
+echo "📦 Installing SpaceVim"
 curl -sLf https://spacevim.org/install.sh | bash

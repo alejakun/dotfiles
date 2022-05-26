@@ -1,17 +1,17 @@
 #!/bin/sh
 
-echo "💾  Backing up application settings with Mackup..."
+echo "💾 Backing up application settings with Mackup..."
 
 # Ensure .mackup.cfg is using the .dotfiles version
-rm -rf $HOME/.mackup.cfg
-ln -s $DOTFILES/macos/mackup/mackup.cfg $HOME/.mackup.cfg
+rm -rf "$HOME/.mackup.cfg"
+ln -s "$DOTFILES/macos/mackup/mackup.cfg" "$HOME/.mackup.cfg"
 # Ensure .mackup (mackup xtra deifnitions) are using the .dotfiles version
-rm -rf $HOME/.mackup
-ln -s $DOTFILES/macos/mackup/apps $HOME/.mackup
+rm -rf "$HOME/.mackup"
+ln -s "$DOTFILES/macos/mackup/apps" "$HOME/.mackup"
 
 mackup backup
 
-echo "📐  Backing up OmniGraffle App's Templates..."
+echo "📐 Backing up OmniGraffle App's Templates..."
 
 cp -rf "$HOME/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/" \
        "$HOME/Dropbox/Mackup/Library/Containers/com.omnigroup.OmniGraffle7.MacAppStore/Data/Library/Application Support/The Omni Group/OmniGraffle/"

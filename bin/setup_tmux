@@ -5,12 +5,12 @@ echo "🖥  Setting up Tmux..."
 echo "🐑  Cloning tmux repository"
 
 # Basing tmux configuration from this repository: https://github.com/gpakosz/.tmux
-git clone https://github.com/gpakosz/.tmux.git $DOTFILES/tmp/tmux
+git clone https://github.com/gpakosz/.tmux.git "$DOTFILES/tmp/tmux"
 
-echo "🚛  Moving tmux configuration files"
+echo "🚛 Moving tmux configuration files"
 
-rm -f $HOME/.tmux.conf*
-cp $DOTFILES/tmp/tmux/.tmux.conf* $HOME/.tmux.conf*
+rm -f "$HOME/.tmux.conf*"
+cp "$DOTFILES/tmp/tmux/.tmux.conf*" "$HOME/.tmux.conf*"
 
-echo "🧹  Cleaning up"
-rm -rf $DOTFILES/tmp/tmux
+echo "🧹 Cleaning up"
+rm -rf "$DOTFILES/tmp/tmux"
