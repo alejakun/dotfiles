@@ -687,7 +687,7 @@ tell application "Terminal"
 	(* Open the custom theme so that it gets added to the list
 	   of available terminal themes (note: this will open two
 	   additional terminal windows). *)
-	do shell script "open '$DOTFILES/osx/themes/" & themeName & ".terminal'"
+	do shell script "open '$DOTFILES/macos/themes/" & themeName & ".terminal'"
 	(* Wait a little bit to ensure that the custom theme is added. *)
 	delay 1
 	(* Set the custom theme as the default terminal theme. *)
@@ -722,7 +722,9 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 defaults write com.apple.Terminal ShowLineMarks -int 0
 
 # Install the Solarized Dark theme for iTerm
-open "${DOTFILES}/osx/themes/Solarized Dark - Patched.itermcolors"
+cd "$DOTFILES/macos/themes/"
+open *.itermcolors
+cd -
 
 # Update Key Mappings, Color Profile, 
 while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]]
