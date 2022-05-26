@@ -9,6 +9,8 @@ wait_for_confirmation() {
         read -p "$message" confirm
     done
 
+    confirm=true
+
 }
 
 ask_for_confirmation_input() {
