@@ -3,7 +3,7 @@
 echo "🖥  Setting up Zsh..."
 
 # Check for Oh My Zsh and install if we don't have it
-if $(which omz) > /dev/null; then
+if ! $(which omz) > /dev/null; then
 
     echo "💲 Installing Oh My Zsh"
 
