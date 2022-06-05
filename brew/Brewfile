@@ -122,11 +122,8 @@ brew 'zsh-syntax-highlighting'
 ###############################
 
 ### Public Fonts
-cask 'font-inter'
-cask 'font-lato'
-cask 'font-iosevka'
-cask 'font-iosevka-nerd-font' # iosevka w/ nerd font support
-# cask 'font-hack-nerd-font' # https://github.com/ryanoasis/nerd-fonts
+# cask 'font-inter'
+# cask 'font-lato'
 
 ### Personal Collection
 tap 'alejakun/cask'
