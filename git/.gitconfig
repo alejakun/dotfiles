@@ -84,6 +84,7 @@
 
         # Misc
         publish = "!git push --set-upstream origin $(git branch-name)"
+        mgd = "!git merge $1 && git br -d $1; #"
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
