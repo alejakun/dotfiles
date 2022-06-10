@@ -151,6 +151,11 @@ cask 'path-finder'
 cask 'anki'
 cask 'hakuneko'
 
+### Development
+cask 'postman'
+cask 'postman-agent'
+cask 'soapui'
+
 ### Mac App Store
 
 ## Privacy & Security
