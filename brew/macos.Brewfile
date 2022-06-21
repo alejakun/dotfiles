@@ -150,6 +150,8 @@ cask 'path-finder'
 ### Education & Entertainment
 cask 'anki'
 cask 'hakuneko'
+cask 'tradingview'
+cask 'steam'
 
 ### Development
 cask 'postman'
