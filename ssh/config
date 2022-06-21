@@ -15,6 +15,11 @@ Host master
    Port 22
    User pi
 
+Host vps
+   HostName vps.alejakun.io
+   Port 22
+   User ubuntu
+
 ### Ambiente PoC Manpower
 
 Host mictlan
