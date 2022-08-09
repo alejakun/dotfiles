@@ -10,7 +10,7 @@ Host nasty
    Port 2222
    User alex
 
-Host master
+Host rbp
    HostName rbp.alejakun.io
    Port 22
    User pi
