@@ -104,6 +104,7 @@ cask 'hazel'
 cask 'atext'
 cask 'bartender'
 # cask 'ubar'
+cask oversight
 
 ### Power Management
 cask 'aldente' # Limit battery power load
