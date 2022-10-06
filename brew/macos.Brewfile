@@ -126,7 +126,8 @@ cask 'microsoft-teams'
 cask 'anydesk'
 # cask 'vnc-viewer'
 cask 'teamviewer'
-cask 'bitrix24' # BWR
+cask 'krisp'
+# cask 'bitrix24' # BWR
 
 ### Multimedia
 cask 'spotify'
