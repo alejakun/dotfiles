@@ -34,6 +34,7 @@ cask 'sublime-text'
 # cask 'virtualbox'
 # cask 'virtualbox-extension-pack'
 # cask 'vagrant'
+# cask 'docker'
 
 #################################
 ## Software Development in Mac ##
@@ -54,6 +55,7 @@ cask 'iterm2'
 # cask 'transmit'
 
 ### Database
+cask 'sqlitestudio'
 # cask 'mysqlworkbench'
 # cask 'db-browser-for-sqlite'
 
@@ -116,7 +118,7 @@ cask 'turbo-boost-switcher'
 # cask 'fing' # Network Monitor
 
 ### Office Tools
-cask 'postbox'
+# cask 'postbox'
 cask 'franz'
 # cask 'skype'
 cask 'zoom'
@@ -153,7 +155,7 @@ cask 'path-finder'
 cask 'anki'
 cask 'hakuneko'
 cask 'tradingview'
-cask 'steam'
+# cask 'steam'
 
 ### Development
 cask 'postman'
@@ -177,6 +179,7 @@ mas "World Clock Pro", id: 858446756
 mas "iStatistica Pro", id: 1447778660
 mas "StatsWidgetPlus", id: 1022329158
 mas "AdGuard for Safari", id: 1440147259
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
 mas "Time Out - Break Reminders", id:402592703
 # mas "Simon Says - Moverse en puesto", id: 1160131071
 # mas "Amphetamine", id: 937984704
@@ -190,6 +193,7 @@ mas "Time Out - Break Reminders", id:402592703
 # mas "Speedtest by Ookla", id: 1153157709
 # mas "Home Inventory", id: 413564952
 # mas "Mela – Recipe Manager", id: 1568924476
+# mas "Boom 3D", id: 1233048948
 
 ## Power User & Software Developer
 
@@ -206,6 +210,7 @@ mas "Termius", id: 1176074088
 # mas "RegExp", id: 1546140065
 # mas "Patterns - The Regex App", id: 429449079
 # mas "QRcoder QR Code Generator", id: 1545201375
+# mas "Parallels Desktop", id: 1085114709
 
 ## Communication, Social & News
 
@@ -247,6 +252,7 @@ mas "Fantastical", id: 975937182
 # mas "WeekCalendar - Nube Calendario", id:381059732
 # mas "BusyCal: Calendar & Reminders", id: 1173663647
 # mas "Airmail 5", id: 918858936
+# mas "Mail for Gmail", id: 1216244845
 # mas "Canary Mail App", id: 1236045954
 # mas "Spark - App correo de Readdle", id: 1176895641
 # mas "Trello", id: 1278508951
@@ -296,6 +302,7 @@ mas "Lightshot Screenshot", id:526298438
 # mas "Boom3D: Volume Booster and EQ", id: 1233048948
 # mas "Amazon Prime Video", id: 545519333
 # mas "Affinity Photo", id: 824183456
+mas "Affinity Photo 2", id: 1616822987
 # mas "PhotoScape X - Photo Editor", id: 929507092
 # mas "PhotoBulk: watermark in batch", id: 537211143
 # mas "Final Cut Pro", id: 424389933
@@ -303,6 +310,7 @@ mas "Lightshot Screenshot", id:526298438
 # mas "GarageBand", id: 682658836
 # mas "Tag Editor", id: 886882234
 # mas "Downcast", id: 668429425
+# mas "M3U Edit", id: 1579892159
 
 ## File Management and Hard Drive Health
 
@@ -337,3 +345,5 @@ mas "Keka", id: 470158793
 # # - Presto (Synology file transfer): https://www.synology.com/en-us/support/download/DS920+#utilities
 # # - UniFi
 # # - UniFi-Discover
+# # - TP-Link tpPLC: https://www.tp-link.com/mx/support/download/tl-pa4010-kit/v1/
+# # - ITPVSmartersPro: https://www.iptvsmarters.com/download/?download=mac

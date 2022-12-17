@@ -74,6 +74,7 @@ brew 'tmux'
 brew 'midnight-commander'
 brew 'lcdf-typetools' # Font Utilities
 brew 'fontconfig' # Font Utilities
+brew 'fontforge'
 
 ###############################
 ## Software Development      ##
@@ -126,6 +127,7 @@ brew 'zsh-syntax-highlighting'
 # cask 'font-lato'
 
 ### Personal Collection
+
 tap 'alejakun/cask'
 
 cask 'alejakun/cask/font-agrevuecyr-roman'
