@@ -106,7 +106,8 @@ cask 'hazel'
 cask 'atext'
 cask 'bartender'
 # cask 'ubar'
-cask oversight
+cask 'oversight'
+cask 'malwarebytes'
 
 ### Power Management
 cask 'aldente' # Limit battery power load
@@ -310,7 +311,6 @@ mas "Affinity Photo 2", id: 1616822987
 # mas "GarageBand", id: 682658836
 # mas "Tag Editor", id: 886882234
 # mas "Downcast", id: 668429425
-# mas "M3U Edit", id: 1579892159
 
 ## File Management and Hard Drive Health
 
@@ -323,6 +323,7 @@ mas "DaisyDisk", id: 411643860
 mas "Keka", id: 470158793
 # mas "The Unarchiver", id: 425424353
 # mas "Sync Folders Pro", id: 522706442
+# mas "TrashMe", id: id443126292
 
 ###############################
 ## Screensavers              ##
