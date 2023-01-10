@@ -940,7 +940,7 @@ echo "🎛  Other System Settings"
 ### Quad9
 # 2620:fe::fe
 # 2620:fe::9
-sudo networksetup -setdnsservers Wi-Fi 192.168.1.201 9.9.9.9 149.112.112.112 2620:fe::fe 2620:fe::9 1.1.1.1 1.0.0.1
+sudo networksetup -setdnsservers Wi-Fi 192.168.0.201 9.9.9.9 149.112.112.112 2620:fe::fe 2620:fe::9 1.1.1.1 1.0.0.1
 
 # Restoring printer's settings
 # sudo cp -Rf $HOME/Dropbox/Mackup/Printers/cups/ /etc/cups/
