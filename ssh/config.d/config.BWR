@@ -1,0 +1,14 @@
+### Ambiente BWR
+
+Host bwr-des-proxy
+   HostName 150.136.111.172
+   # use: ssh -N bwr-des-proxy
+   IdentityFile ~/.ssh/id_rsa_soa_des
+   User proxy
+   RequestTTY no
+   RemoteCommand /bin/false
+   LocalForward 7001 10.0.0.2:7001
+   LocalForward 7003 10.0.0.2:7003
+   LocalForward 7101 10.0.0.2:7101
+   LocalForward 7103 10.0.0.2:7103
+   LocalForward 1521 10.0.1.2:

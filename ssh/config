@@ -1,66 +1,15 @@
-### Ambiente HomeLab
-
-Host srm
-   HostName srm.alejakun.io
-   Port 2222
-   User alex
-
-Host nasty
-   HostName nasty.alejakun.io
-   Port 2222
-   User alex
-
-Host rbp
-   HostName rbp.alejakun.io
-   Port 22
-   User pi
-
-Host vps
-   HostName vps.alejakun.io
-   Port 22
-   User ubuntu
-
-### Ambiente PoC Manpower
-
-Host mictlan
-   HostName localhost
-   Port 2222
-   User bwr
-
-Host ibm-apm
-   HostName localhost
-   Port 2223
-   User ibm
-
-Host ibm-itm
-   HostName localhost
-   Port 2224
-   User ibm
-
-Host ibm-rh-apm
-   HostName localhost
-   Port 2225
-   User ibm
-
-Host ibm-rh-itm
-   HostName localhost
-   Port 2226
-   User ibm
-
-Host bwr-des-proxy
-   HostName 150.136.111.172
-   # use: ssh -N bwr-des-proxy
-   IdentityFile ~/.ssh/id_rsa_soa_des
-   User proxy
-   RequestTTY no
-   RemoteCommand /bin/false
-   LocalForward 7001 10.0.0.2:7001
-   LocalForward 7003 10.0.0.2:7003
-   LocalForward 7101 10.0.0.2:7101
-   LocalForward 7103 10.0.0.2:7103
-   LocalForward 1521 10.0.1.2:1521
+### Reglas Generales
 
 Host *
- AddKeysToAgent yes
- UseKeychain yes
- IdentityFile ~/.ssh/id_ed25519
+   UserKnownHostsFile         /dev/null
+   StrictHostKeyChecking      no
+   IdentitiesOnly             yes
+   LogLevel                   FATAL
+   ConnectionAttempts         1
+   ConnectTimeout             20
+   ServerAliveInterval        30
+#   LocalForward               7001  10.0.0.20:7001
+#   ForwardX11                 yes
+#   ForwardX11Trusted          yes
+
+Include config.d/config.*

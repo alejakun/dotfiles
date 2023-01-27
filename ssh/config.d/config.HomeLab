@@ -1,0 +1,26 @@
+### Ambiente HomeLab
+
+Host srm
+   HostName srm.alejakun.io
+   Port 2222
+   User alex
+
+Host nasty
+   HostName nasty.alejakun.io
+   Port 2222
+   User alex
+
+Host rbp
+   HostName rbp.alejakun.io
+   Port 22
+   User pi
+
+Host vps
+   HostName vps.alejakun.io
+   Port 22
+   User ubuntu
+
+Host *
+ AddKeysToAgent yes
+ UseKeychain yes
+ IdentityFile ~/.ssh/id_ed25519
