@@ -20,7 +20,13 @@ Host vps
    Port 22
    User ubuntu
 
+Host homelab
+   HostName homelab.alejakun.io
+   Port 22
+   User opc
+   IdentityFile ~/.ssh/homelab-ssh-key.key
+
 Host *
- AddKeysToAgent yes
- UseKeychain yes
- IdentityFile ~/.ssh/id_ed25519
+   AddKeysToAgent yes
+   UseKeychain yes
+   IdentityFile ~/.ssh/id_ed25519

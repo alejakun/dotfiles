@@ -1,0 +1,6 @@
+### Ambiente Cloud Practitioner
+
+Host aws
+   HostName 18.119.130.165
+   IdentityFile ~/.ssh/EC2Tutorial.pem
+   User ec2-user
