@@ -17,7 +17,7 @@ export ZSH=$HOME/.oh-my-zsh
 # ZSH_CUSTOM=$DOTFILES/zsh
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Add Java to $PATH
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/openjdk@8/bin:$PATH"
