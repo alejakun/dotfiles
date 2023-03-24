@@ -70,6 +70,8 @@ brew 'defaultbrowser'
 brew 'switchaudio-osx'
 tap 'smudge/smudge'
 brew 'smudge/smudge/nightlight' # https://github.com/smudge/nightlight
+# brew 'koekeishiya/formulae/yabai' # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+# cask 'karabiner-elements'
 
 ### Quicklook
 cask 'qlcolorcode'
@@ -191,7 +193,7 @@ mas "Time Out - Break Reminders", id:402592703
 # mas # "Deliveries: a package tracker", id: 290983 # No disponible en el país
 # mas "Typeeto: remote BT keyboard", id: 970502923
 # mas "Image2icon - Crea tus iconos", id: 992115977
-# mas "Speedtest by Ookla", id: 1153157709
+mas "Speedtest by Ookla", id: 1153157709
 # mas "Home Inventory", id: 413564952
 # mas "Mela – Recipe Manager", id: 1568924476
 # mas "Boom 3D", id: 1233048948
@@ -330,10 +332,12 @@ mas "Keka", id: 470158793
 ###############################
 
 # TODO: Add custom screensavers as casks
-# cask 'aerial'
+cask 'aerial'
+cask 'xscreensaver'
 
 # # Unavailable Apps
 
+# # - Yabai Indicator: https://github.com/xiamaz/YabaiIndicator
 # # - Amphetamine Enhancer: https://github.com/x74353/Amphetamine-Enhancer/
 # # - Compannion Link: https://www.companionlink.com/outlookformac/
 # # - Purrfect Volume: https://medium.com/trabe/limiting-your-macs-volume-in-2019-f314e20408ab
