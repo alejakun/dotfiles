@@ -9,6 +9,3 @@ mkdir -p "$HOME/.ssh"
 rm -f "$HOME/.ssh/config"
 ln -s "$DOTFILES/ssh/config" "$HOME/.ssh/config"
 ln -s "$DOTFILES/ssh/config.d" "$HOME/.ssh/config.d"
-
-rm -f "/etc/hosts"
-ln -s "$DOTFILES/etc/hosts" "/etc/hosts"
