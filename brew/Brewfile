@@ -54,6 +54,7 @@ brew 'nano'
 # Other commands (non-GNU)
 brew 'file-formula'
 brew 'git'
+brew 'diff-so-fancy'
 brew 'less'
 # brew 'openssh'
 # brew 'perl'
