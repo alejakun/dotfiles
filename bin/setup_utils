@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "🖥  Setting up other utils..."
+
+echo "🚛 Moving etc/hosts file"
+
+rm -f "/etc/hosts"
+ln -s "$DOTFILES/etc/hosts" "/etc/hosts"
+
+# echo "🚛 Moving karabiner configuration file"
+
+# rm -f "~/.config/karabiner/karabiner.json"
+# cp "$DOTFILES/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
