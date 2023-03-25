@@ -1,8 +1,6 @@
 [user]
 	name = Alex Pedroza
 	email = alejandro.pedroza@bwr.mx
-[core]
-	excludesfile = /Users/alex/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -13,14 +11,9 @@
 	template = /Users/alex/.stCommitMsg
 [http]
 	postBuffer = 524288000
-[alias]
-	lg = log --oneline --decorate --all --graph
-	s = status -sb
 [credential]
 	helper = /usr/local/share/gcm-core/git-credential-manager-core
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [github]
 	user = alejakun
-[push]
-	default = simple

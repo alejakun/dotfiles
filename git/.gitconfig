@@ -61,6 +61,7 @@
         l = log --pretty=custom                      # Show custom log
         ll = log --stat --abbrev-commit
         lc = shortlog --summary --numbered           # List contributors
+        lg = log --oneline --decorate --all --graph
 
         # Reset
         unstage = reset HEAD --                      # Mixed reset (affects HEAD and Index)
