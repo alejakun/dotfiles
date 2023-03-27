@@ -65,6 +65,7 @@ brew 'unzip'
 # brew 'vim'
 # brew 'macvim'
 brew 'zsh'
+# brew 'starship'           # Alternative to Powerlevel10K https://www.reddit.com/r/zsh/comments/10k0g93/comment/j5nvac2/?utm_source=share&utm_medium=web2x&context=3
 
 # Other commands (personal)
 # brew 'awk'
