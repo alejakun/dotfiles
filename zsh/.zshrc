@@ -38,3 +38,6 @@ source $DOTFILES/zsh/aliases.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# As an alternative to power10k
+# eval "$(starship init zsh)"
