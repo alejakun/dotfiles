@@ -14,17 +14,14 @@ Host rbp
    HostName rbp.alejakun.io
    Port 22
    User pi
+   IdentityFile ~/.ssh/homelab/id_rsa
 
-Host vps
-   HostName vps.alejakun.io
-   Port 22
-   User ubuntu
-
-Host homelab
+Host oci
    HostName homelab.alejakun.io
    Port 22
-   User opc
-   IdentityFile ~/.ssh/homelab-ssh-key.key
+   # User opc
+   User ubuntu
+   IdentityFile ~/.ssh/oci/homelab-ssh-key.key
 
 Host *
    AddKeysToAgent yes

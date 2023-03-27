@@ -3,7 +3,7 @@
 Host bwr-des-proxy
    HostName 150.136.111.172
    # use: ssh -N bwr-des-proxy
-   IdentityFile ~/.ssh/id_rsa_soa_des
+   IdentityFile ~/.ssh/oci/id_rsa_bwr_soa_des
    User proxy
    RequestTTY no
    RemoteCommand /bin/false
