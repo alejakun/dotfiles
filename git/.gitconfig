@@ -35,6 +35,7 @@
         d = diff --color-words
         dc = diff --cached
         df = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+        dif = diff FETCH_HEAD -- 
 
         # Merge
         m = merge
