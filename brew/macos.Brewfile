@@ -64,6 +64,7 @@ cask 'sqlitestudio'
 ###############################
 
 ### System Utilities
+cask 'launchcontrol'
 brew 'mas'
 brew 'trash'
 brew 'defaultbrowser'
@@ -72,6 +73,7 @@ tap 'smudge/smudge'
 brew 'smudge/smudge/nightlight' # https://github.com/smudge/nightlight
 # brew 'koekeishiya/formulae/yabai' # https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
 # cask 'karabiner-elements'
+cask 'ubersicht'
 
 ### Quicklook
 cask 'qlcolorcode'
