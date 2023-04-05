@@ -19,6 +19,7 @@ then
     echo "🍎 Setting up an Apple System"
 
     # Install macOS Apps & Packages
+    sudo gem install iStats
     source ./brew_install
     source ./restore_mackup.sh
 
@@ -30,6 +31,7 @@ then
     source ./setup_tmux
     source ./setup_vim
     # source ./setup_terminal
+    source ./setup_launchctl
 
     # Set macOS preferences - we will run this last because this will reload the shell
     # and reboot the sytem
