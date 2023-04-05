@@ -4,6 +4,8 @@ alias reload="exec ${SHELL} -l"
 alias ll="/usr/local/opt/coreutils/libexec/gnubin/ls -AhlFo --color --group-directories-first"
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 alias c="clear"
+alias sc='open -a /System/Library/CoreServices/ScreenSaverEngine.app'
+# alias sc='open -a /System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app'
 
 # alias phpstorm='open -a /Applications/PhpStorm.app "`pwd`"'
 
@@ -23,7 +25,6 @@ alias egrep='egrep --color=auto'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
-
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
