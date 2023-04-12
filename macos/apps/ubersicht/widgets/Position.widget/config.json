@@ -7,35 +7,42 @@
         "@infos": "Daily Random Kanji",
         "position": "C|0|0"
     },
-    "waifu-widget-waifu-coffee": {
-        "@infos": "Waifu Widget",
-        "position": "BR|10|10"
-    },
     "Twitch-widget-index-coffee": {
-        "@infos": "Daily Random Kanji",
+        "@infos": "Online Twitch Channels",
         "position": "TR|10|10"
     },
     "outdated-brew-formulae-widget-index-coffee": {
-        "@infos": "Daily Random Kanji",
+        "@infos": "Oudated Brew Formulae",
         "position": "TL|170|10"
     },
     "raspberryData-widget-index-coffee": {
-        "@infos": "Daily Random Kanji",
+        "@infos": "Raspberry Data",
         "position": "BL|80|10"
     },
     "istats-widget-index-jsx": {
-        "@infos": "Daily Random Kanji",
+        "@infos": "IS Stats",
         "position": "BL|10|5"
     },
     "BinanceCryptoPrices-widget-BinanceCryptoPrices-jsx": {
-        "@infos": "Daily Random Kanji",
+        "@infos": "Binance Crypto Prices",
         "position": "TL|65|10"
     },
     "Tautulli-widget-index-jsx": {
-        "@infos": "Daily Random Kanji",
+        "@infos": "Tautulli Playing",
         "position": "TR|10|350"
     },
-    
+    "world-clock-widget-index-jsx": {
+        "@infos": "Horizontal World Clock",
+        "position": "BR|100|10"
+    },
+    "WorldClock-widget-index-coffee": {
+        "@infos": "Horizontal World Clock",
+        "position": "BR|10|10"
+    },
+    "waifu-widget-waifu-coffee": {
+        "@infos": "Waifu Widget",
+        "position": "BR|100|300"
+    },   
     
 
     "Youtube-widget-index-coffee": {
