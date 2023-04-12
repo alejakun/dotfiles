@@ -161,6 +161,7 @@ cask 'anki'
 cask 'hakuneko'
 cask 'tradingview'
 # cask 'steam'
+# cask 'raven-reader'
 
 ### Development
 cask 'postman'
