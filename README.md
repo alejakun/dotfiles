@@ -33,7 +33,7 @@ If you need to create the GitHub Token you can follow [this link](https://github
 
 ### Create Strap.sh GitHub Token
 
-If you don't have one already you should create the Strap.sh GitHub Token [here](https://macos-strap.herokuapp.com/) and following the Authorize Strap on GitHub procedure.
+If you don't have one already you should create the Strap.sh GitHub Token [here](https://strap.mikemcquaid.com/) and following the Authorize Strap on GitHub procedure.
 
 # Running the strap.sh script
 
@@ -65,22 +65,37 @@ Installing CLT for Mac will install the following utilities (as documented [here
 * Install of [Homebrew](https://brew.sh/) and basic casks
 * Clone user's GitHub dotfiles repository for user into `~/.dotfiles`
 * Run `Brewfile` as pointed by `$HOMEBREW_BREWFILE`
-* Run `~/.dotfiles/script/setup` script, which in turn will:
+
+# Running the setup.sh script
+
+In case it is necessary you can independently run the setup script by getting into the `.dotfiles` directory and running the following command:
+```sh
+$ bash ~/.dotfiles/script/setup
+```
+
+* Run `~/.dotfiles/script/setup` script, which will:
     * Try to install `zsh`
-    * Try to install [Homebrew](https://brew.sh/)
+    * Try to install [Homebrew](https://brew.sh/) (in case strap.sh did not ran)
     * Install apps and fonts specified in `Brewfile`
         * [Personal Font Collection](https://github.com/alejakun/homebrew-cask)
     * Restore [Mackup](https://github.com/lra/mackup) configuration
     * Install and configure [OhMyZsh](https://ohmyz.sh/), [Powerlevel10k](https://github.com/romkatv/powerlevel10k) and Fonts:
         * [Powerline](https://github.com/powerline/fonts)
     * Setup `OSX` System Preferences
-# Running the setup script
 
-In case it is necessary you can independently run the setup script by getting in the `.dotfiles` directory and runnin the following script:
-```sh
-$ bash ~/.dotfiles/script/setup
-```
+In case it is necessary this operations are performed by independenly configured scripts which can be run as needed:
+* `setup_git`: Sets up `git` configuration files
+* `setup_karabiner`: Sets up `Karabiner.app` configuration files
+* `setup_system_files`: Sets up several system configuration files
+* `setup_system_settings`: Sets up several system settings
+* `setup_terminal`: Loads `Terminal.app` and `iTerm2.app` themes
+* `setup_tmux`: Sets up `tmux`
+* `setup_vim`: Sets up `vim` / `SpaceVim`
+* `setup_zsh`: Setus up `zsh`
 
-# Restoring Mackup settings
+# Backup/Restore Mackup settings
 
 Before it is safe to restore Mackup settings it is necessary to sync Mackup directory from Dropbox. Since this requires Dropbox configuration and the hostname is still not setup it is recommended not to configure Dropbox's backup yet, but after the script is fully run.
+
+To run a backup you can go to `.dotfiles/bin` and execute: `./backup.sh backup`
+To restore a backup you can go to `.dotfiles/bin` and execute: `./backup.sh restore`
