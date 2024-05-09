@@ -1,9 +1,11 @@
 #!/bin/bash
 #/ Usage: bin/strap.sh [--debug]
 #/ Install development dependencies on macOS.
-#/ Created in: https://macos-strap.herokuapp.com/
 
 ## CUSTOM
+
+# https://strap.mikemcquaid.com
+source ../private/authinfo
 
 # Verify environment
 if [ -z "$DOTFILES" ] || [ -z "$GIT_EMAIL" ] || [ -z "$GIT_USER" ] || [ -z "$HOMEBREW_GITHUB_API_TOKEN" ] || [ -z "$HOMEBREW_BREWFILE" ] || [ -z "$STRAP_GIT_EMAIL" ] || [ -z "$STRAP_GITHUB_USER" ] || [ -z "$STRAP_GITHUB_TOKEN" ]; then
@@ -26,7 +28,7 @@ fi
 
 set -e
 
-[[ "$1" = "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
+[[ $1 == "--debug" || -o xtrace ]] && STRAP_DEBUG="1"
 STRAP_SUCCESS=""
 
 sudo_askpass() {
@@ -74,7 +76,7 @@ STDIN_FILE_DESCRIPTOR="0"
 # STRAP_GITHUB_TOKEN=
 # CUSTOM_HOMEBREW_TAP=
 # CUSTOM_BREW_COMMAND=
-STRAP_ISSUES_URL='https://github.com/MikeMcQuaid/strap/issues/new'
+# STRAP_ISSUES_URL=
 
 # We want to always prompt for sudo password at least once rather than doing
 # root stuff unexpectedly.
@@ -98,7 +100,7 @@ sudo_init() {
   fi
 
   # If TouchID for sudo is setup: use that instead.
-  if grep -q pam_tid /etc/pam.d/sudo; then
+  if grep -q pam_tid /etc/pam.d/sudo /etc/pam.d/sudo_local 2>/dev/null; then
     return
   fi
 
@@ -117,11 +119,12 @@ sudo_init() {
     done
 
     clear_debug
-    SUDO_PASSWORD_SCRIPT="$(cat <<BASH
+    SUDO_PASSWORD_SCRIPT="$(
+      cat <<BASH
 #!/bin/bash
 echo "$SUDO_PASSWORD"
 BASH
-)"
+    )"
     unset SUDO_PASSWORD
     SUDO_ASKPASS_DIR="$(mktemp -d)"
     SUDO_ASKPASS="$(mktemp "$SUDO_ASKPASS_DIR"/strap-askpass-XXXXXXXX)"
@@ -144,10 +147,35 @@ sudo_refresh() {
   reset_debug
 }
 
-abort() { STRAP_STEP="";   echo "!!! $*" >&2; exit 1; }
-log()   { STRAP_STEP="$*"; sudo_refresh; echo "--> $*"; }
-logn()  { STRAP_STEP="$*"; sudo_refresh; printf -- "--> %s " "$*"; }
-logk()  { STRAP_STEP="";   echo "OK"; }
+abort() {
+  STRAP_STEP=""
+  echo "!!! $*" >&2
+  exit 1
+}
+
+log() {
+  STRAP_STEP="$*"
+  sudo_refresh
+  echo "--> $*"
+}
+
+logn() {
+  STRAP_STEP="$*"
+  sudo_refresh
+  printf -- "--> %s " "$*"
+}
+
+logk() {
+  STRAP_STEP=""
+  echo "OK"
+}
+
+logskip() {
+  STRAP_STEP=""
+  echo "SKIPPED"
+  echo "$*"
+}
+
 escape() {
   printf '%s' "${1//\'/\'}"
 }
@@ -177,6 +205,36 @@ groups | grep $Q -E "\b(admin)\b" || abort "Add $USER to the admin group."
 
 # Prevent sleeping during script execution, as long as the machine is on AC power
 caffeinate -s -w $$ &
+
+# Check and, if necessary, enable sudo authentication using TouchID.
+# Don't care about non-alphanumeric filenames when doing a specific match
+# shellcheck disable=SC2010
+if ls /usr/lib/pam | grep $Q "pam_tid.so"; then
+  logn "Configuring sudo authentication using TouchID:"
+  if [[ -f /etc/pam.d/sudo_local || -f /etc/pam.d/sudo_local.template ]]; then
+    # New in macOS Sonoma, survives updates.
+    PAM_FILE="/etc/pam.d/sudo_local"
+    FIRST_LINE="# sudo_local: local config file which survives system update and is included for sudo"
+    if [[ ! -f "/etc/pam.d/sudo_local" ]]; then
+      echo "$FIRST_LINE" | sudo_askpass tee "$PAM_FILE" >/dev/null
+    fi
+  else
+    PAM_FILE="/etc/pam.d/sudo"
+    FIRST_LINE="# sudo: auth account password session"
+  fi
+  if grep $Q pam_tid.so "$PAM_FILE"; then
+    logk
+  elif ! head -n1 "$PAM_FILE" | grep $Q "$FIRST_LINE"; then
+    logskip "$PAM_FILE is not in the expected format!"
+  else
+    TOUCHID_LINE="auth       sufficient     pam_tid.so"
+    sudo_askpass sed -i .bak -e \
+      "s/$FIRST_LINE/$FIRST_LINE\n$TOUCHID_LINE/" \
+      "$PAM_FILE"
+    sudo_askpass rm "$PAM_FILE.bak"
+    logk
+  fi
+fi
 
 # Set some basic security settings.
 logn "Configuring security settings:"
@@ -209,8 +267,8 @@ elif [ -n "$STRAP_CI" ]; then
 elif [ -n "$STRAP_INTERACTIVE" ]; then
   echo
   log "Enabling full-disk encryption on next reboot:"
-  sudo_askpass fdesetup enable -user "$USER" \
-    | tee ~/Desktop/"FileVault Recovery Key.txt"
+  sudo_askpass fdesetup enable -user "$USER" |
+    tee ~/Desktop/"FileVault Recovery Key.txt"
   logk
 else
   echo
@@ -218,22 +276,20 @@ else
 fi
 
 # Install the Xcode Command Line Tools.
-if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]
-then
+if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
   log "Installing the Xcode Command Line Tools:"
   CLT_PLACEHOLDER="/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress"
   sudo_askpass touch "$CLT_PLACEHOLDER"
 
-  CLT_PACKAGE=$(softwareupdate -l | \
-                grep -B 1 "Command Line Tools" | \
-                awk -F"*" '/^ *\*/ {print $2}' | \
-                sed -e 's/^ *Label: //' -e 's/^ *//' | \
-                sort -V |
-                tail -n1)
+  CLT_PACKAGE=$(softwareupdate -l |
+    grep -B 1 "Command Line Tools" |
+    awk -F"*" '/^ *\*/ {print $2}' |
+    sed -e 's/^ *Label: //' -e 's/^ *//' |
+    sort -V |
+    tail -n1)
   sudo_askpass softwareupdate -i "$CLT_PACKAGE"
   sudo_askpass rm -f "$CLT_PLACEHOLDER"
-  if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]
-  then
+  if ! [ -f "/Library/Developer/CommandLineTools/usr/bin/git" ]; then
     if [ -n "$STRAP_INTERACTIVE" ]; then
       echo
       logn "Requesting user install of Xcode Command Line Tools:"
@@ -280,21 +336,18 @@ if ! git config push.default >/dev/null; then
 fi
 
 # Setup GitHub HTTPS credentials.
-if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"
-then
+if git credential-osxkeychain 2>&1 | grep $Q "git.credential-osxkeychain"; then
   # Actually execute the credential in case it's a wrapper script for credential-osxkeychain
-  if git "credential-$(git config --global credential.helper 2>/dev/null)" 2>&1 \
-     | grep -v $Q "git.credential-osxkeychain"
-  then
+  if git "credential-$(git config --global credential.helper 2>/dev/null)" 2>&1 |
+    grep -v $Q "git.credential-osxkeychain"; then
     git config --global credential.helper osxkeychain
   fi
 
-  if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]
-  then
-    printf "protocol=https\\nhost=github.com\\n" | git credential reject
-    printf "protocol=https\\nhost=github.com\\nusername=%s\\npassword=%s\\n" \
-          "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" \
-          | git credential approve
+  if [ -n "$STRAP_GITHUB_USER" ] && [ -n "$STRAP_GITHUB_TOKEN" ]; then
+    printf 'protocol=https\nhost=github.com\n' | git credential reject
+    printf 'protocol=https\nhost=github.com\nusername=%s\npassword=%s\n' \
+      "$STRAP_GITHUB_USER" "$STRAP_GITHUB_TOKEN" |
+      git credential approve
   fi
 fi
 logk
@@ -305,7 +358,7 @@ HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
 HOMEBREW_REPOSITORY="$(brew --repository 2>/dev/null || true)"
 if [ -z "$HOMEBREW_PREFIX" ] || [ -z "$HOMEBREW_REPOSITORY" ]; then
   UNAME_MACHINE="$(/usr/bin/uname -m)"
-  if [[ "$UNAME_MACHINE" == "arm64" ]]; then
+  if [[ $UNAME_MACHINE == "arm64" ]]; then
     HOMEBREW_PREFIX="/opt/homebrew"
     HOMEBREW_REPOSITORY="${HOMEBREW_PREFIX}"
   else
@@ -314,21 +367,19 @@ if [ -z "$HOMEBREW_PREFIX" ] || [ -z "$HOMEBREW_REPOSITORY" ]; then
   fi
 fi
 [ -d "$HOMEBREW_PREFIX" ] || sudo_askpass mkdir -p "$HOMEBREW_PREFIX"
-if [ "$HOMEBREW_PREFIX" = "/usr/local" ]
-then
+if [ "$HOMEBREW_PREFIX" = "/usr/local" ]; then
   sudo_askpass chown "root:wheel" "$HOMEBREW_PREFIX" 2>/dev/null || true
 fi
 (
   cd "$HOMEBREW_PREFIX"
-  sudo_askpass mkdir -p               Cellar Caskroom Frameworks bin etc include lib opt sbin share var
-  sudo_askpass chown    "$USER:admin" Cellar Caskroom Frameworks bin etc include lib opt sbin share var
+  sudo_askpass mkdir -p Cellar Caskroom Frameworks bin etc include lib opt sbin share var
+  sudo_askpass chown "$USER:admin" Cellar Caskroom Frameworks bin etc include lib opt sbin share var
 )
 
 [ -d "$HOMEBREW_REPOSITORY" ] || sudo_askpass mkdir -p "$HOMEBREW_REPOSITORY"
 sudo_askpass chown -R "$USER:admin" "$HOMEBREW_REPOSITORY"
 
-if [ $HOMEBREW_PREFIX != $HOMEBREW_REPOSITORY ]
-then
+if [ $HOMEBREW_PREFIX != $HOMEBREW_REPOSITORY ]; then
   ln -sf "$HOMEBREW_REPOSITORY/bin/brew" "$HOMEBREW_PREFIX/bin/brew"
 fi
 
@@ -346,15 +397,6 @@ logk
 export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 logn "Updating Homebrew:"
 brew update --quiet
-logk
-
-# Install Homebrew Bundle, Cask and Services tap.
-log "Installing Homebrew taps and extensions:"
-brew bundle --quiet --file=- <<RUBY
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "homebrew/services"
-RUBY
 logk
 
 # Check and install any remaining software updates.
@@ -417,13 +459,13 @@ fi
 # Install from local Brewfile
 if [ -f "$HOME/.Brewfile" ]; then
   log "Installing from user Brewfile on GitHub:"
-  brew bundle check --global || brew bundle --global
+  brew bundle check --global &>/dev/null || brew bundle --global
   logk
 fi
 
 # Tap a custom Homebrew tap
 if [ -n "$CUSTOM_HOMEBREW_TAP" ]; then
-  read -ra CUSTOM_HOMEBREW_TAP <<< "$CUSTOM_HOMEBREW_TAP"
+  read -ra CUSTOM_HOMEBREW_TAP <<<"$CUSTOM_HOMEBREW_TAP"
   log "Running 'brew tap ${CUSTOM_HOMEBREW_TAP[*]}':"
   brew tap "${CUSTOM_HOMEBREW_TAP[@]}"
   logk
@@ -432,6 +474,7 @@ fi
 # Run a custom `brew` command
 if [ -n "$CUSTOM_BREW_COMMAND" ]; then
   log "Executing 'brew $CUSTOM_BREW_COMMAND':"
+  # Want to expand even if empty or multiple arguments
   # shellcheck disable=SC2086
   brew $CUSTOM_BREW_COMMAND
   logk
