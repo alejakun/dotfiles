@@ -28,10 +28,10 @@ done
 echo "🚛 Creating Randomize Screensaver Agent"
 
 rm -f ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-rm -f /usr/local/bin/randomize_screensaver.sh
+sudo rm -f /usr/local/bin/randomize_screensaver.sh
 ln -s ~/.dotfiles/macos/launchctl/agents/io.alejakun.screensavers.plist  ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-ln -s ~/.dotfiles/macos/launchctl/scripts/randomize_screensaver.sh /usr/local/bin/randomize_screensaver.sh
-macos/launchctl bootstrap gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
+sudo ln -s ~/.dotfiles/macos/launchctl/scripts/randomize_screensaver.sh /usr/local/bin/randomize_screensaver.sh
+sudo launchctl bootstrap gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
 # macos/launchctl bootout gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
 
 # echo "🚛 Moving etc/hosts file"
