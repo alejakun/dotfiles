@@ -12,4 +12,6 @@ Host *
 #   ForwardX11                 yes
 #   ForwardX11Trusted          yes
 
+IdentityFile ~/.ssh/homelab/id_rsa
+
 Include config.d/config.*
