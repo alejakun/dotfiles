@@ -13,7 +13,7 @@ Host nasty
 Host rbp
    HostName rbp.alejakun.io
    Port 22
-   User pi
+   User alex
    IdentityFile ~/.ssh/homelab/id_rsa
 
 Host oci
