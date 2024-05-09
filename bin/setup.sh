@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source utils
+source bootstrap
 
 echo "🖥  Setting up your System..."
 
@@ -16,10 +16,9 @@ then
 
     # MacOS
 
-    echo "🍎 Setting up an Apple System"
+    echo "🍎 Setting up Apple System"
 
     # Install macOS Apps & Packages
-    sudo gem install iStats
     source ./brew_install
     source ./restore_mackup.sh
 
@@ -36,24 +35,6 @@ then
     # Set macOS preferences - we will run this last because this will reload the shell
     # and reboot the sytem
     source ./setup_macos
-    
-elif test "$(uname)" = "Linux";
-then
-    # Linux
-
-    echo "🐧 Setting up a Linux System" 
-
-    # Make ZSH the default shell environment
-    source ./brew_install
-    source ./apt_install
-    
-    source ./setup_zsh
-    chsh -s $(which zsh)
-
-    source ./setup_git
-    source ./setup_ssh
-    source ./setup_tmux
-    source ./setup_vim
 
 else
     # Other
