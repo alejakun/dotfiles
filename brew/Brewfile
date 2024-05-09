@@ -1,128 +1,398 @@
 # Formulaes list: https://formulae.brew.sh/cask/
 # To fresh up the information of installed casks:
-# brew list
-# brew list --cask
+# brew leaves --installed-on-request | xargs -n1 brew desc --eval-all
+# brew ls --casks | xargs brew desc --eval-all
 # mas list
 
 ### Main Taps
+tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
-tap 'homebrew/bundle'
 
 ### Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
 
-###############################
-## GNU Tools                 ##
-###############################
+##################################################
+## General Purpose Tools                        ##
+##################################################
 
 # As documented in: https://www.topbug.net/blog/2013/04/14/install-and-use-gnu-command-line-tools-in-mac-os-x/
 # and: https://gist.github.com/xuhdev/8b1b16fb802f6870729038ce3789568f
 # Install GNU core utilities (those that come with OS X are outdated)
 
 # Core GNU
-brew 'coreutils'
+brew 'coreutils' # GNU File, Shell, and Text utilities
 
 # GNU key commands
-brew 'binutils'
-brew 'diffutils'
-brew 'ed'
-brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
-brew 'gawk'
-brew 'gnu-indent'
-brew 'gnu-sed'
-brew 'gnu-tar'
-brew 'gnu-which'
-brew 'gnutls'
-brew 'grep'
-brew 'gzip'
-brew 'screen'
-brew 'watch'
-brew 'wdiff'
-brew 'wget'
-
-# OS X ships a GNU version, but too old
-brew 'bash'
-# brew 'emacs'
-# brew 'gdb'  # gdb requires further actions to make it work. See `brew info gdb`.
-brew 'gpatch'
-# brew 'm4'
-brew 'make'
-brew 'nano'
+brew 'watch' # Executes a program periodically, showing output fullscreen
+brew 'wget' # Internet file retriever
 
 # Other commands (non-GNU)
-brew 'file-formula'
-brew 'git'
-brew 'diff-so-fancy'
-brew 'less'
-# brew 'openssh'
-# brew 'perl'
-brew 'python@3.9'
-brew 'rsync'
-# brew 'svn'
-brew 'unzip'
-# brew 'vim'
-# brew 'macvim'
-brew 'zsh'
-# brew 'starship'           # Alternative to Powerlevel10K https://www.reddit.com/r/zsh/comments/10k0g93/comment/j5nvac2/?utm_source=share&utm_medium=web2x&context=3
+brew 'curl' # Get a file from an HTTP, HTTPS or FTP server
+brew 'diff-so-fancy' # Good-lookin' diffs with diff-highlight and more
+brew 'file-formula' # Utility to determine file types
+brew 'git' # Distributed revision control system
+brew 'less' # Pager program similar to more
+brew 'midnight-commander' # Terminal-based visual file manager
+# brew 'rsync' # Utility that provides fast incremental file transfer
+brew 'tree' # Display directories as trees (with optional color/HTML output
+brew 'tmux' # Terminal multiplexer
+# brew 'unzip' # Extraction utility for .zip compressed archives
 
-# Other commands (personal)
-# brew 'awk'
-brew 'neovim'
-brew 'tree'
-brew 'tmux'
-# brew 'rename'
-brew 'midnight-commander'
-brew 'lcdf-typetools' # Font Utilities
-brew 'fontconfig' # Font Utilities
-brew 'fontforge'
+##################################################
+## Github Utilities ##
+##################################################
 
-###############################
-## Software Development      ##
-###############################
+brew 'hub' # Add GitHub support to git on the command-line
+cask 'git-credential-manager' # Requieres Password - Cross-platform Git credential storage for multiple hosting providers # https://github.com/GitCredentialManager/git-credential-manager
 
-### Github Utilities
-brew 'hub'
-tap 'microsoft/git'
-cask 'microsoft/git/git-credential-manager-core' # Requieres Password # https://github.com/GitCredentialManager/git-credential-manager
+##################################################
+## Terminal and Shell                           ##
+##################################################
 
-### AWS
-# brew 'awscli'
+tap 'romkatv/powerlevel10k'
 
-### NodeJS
-# brew 'node'
+### Terminal
+cask 'iterm2' # Terminal emulator as alternative to Apple's Terminal app
 
-### PHP
-# brew 'homebrew/php/php70', args: ['with-debug', 'without-apache']
+### OS X ships a GNU version, but too old
+brew 'bash' # Bourne-Again SHell, a UNIX command interpreter
 
-### Java
-# brew 'java'
-brew 'openjdk@8'
-# brew 'openjdk@11'
-# brew 'openjdk@17'
-
-### Containers & Virtualization
-# cask 'docker'
-
-###############################
-## Other Tools               ##
-###############################
-
-### System Utilities
-brew 'mackup'
-tap 'buo/cask-upgrade' # https://github.com/buo/homebrew-cask-upgrade
+### ZSH
+brew 'zsh' # UNIX shell (command interpreter)
+# brew 'starship' # Cross-shell prompt for astronauts - Alternative to Powerlevel10K https://www.reddit.com/r/zsh/comments/10k0g93/comment/j5nvac2/?utm_source=share&utm_medium=web2x&context=3
 
 ### Oh-My-Zsh themes and plugins
-tap 'romkatv/powerlevel10k'
-brew 'powerlevel10k'
-brew 'zsh-autosuggestions'
-brew 'zsh-syntax-highlighting'
-# brew 'zsh-completions' # To enable check: https://formulae.brew.sh/formula/zsh-completions#default
+brew 'powerlevel10k' # Theme for zsh
+brew 'zsh-autosuggestions' # Fish-like fast/unobtrusive autosuggestions for zsh
+brew 'zsh-syntax-highlighting' # Fish shell like syntax highlighting for zsh
+brew 'zsh-completions' # Zsh completion for conda - To enable check: https://formulae.brew.sh/formula/zsh-completions#default
 
-###############################
-## Fonts                     ##
-###############################
+##################################################
+## MacOS System                                 ##
+##################################################
+
+tap 'buo/cask-upgrade' # https://github.com/buo/homebrew-cask-upgrade
+tap 'smudge/smudge'
+
+# brew 'koekeishiya/formulae/yabai' # A window management utility that is designed to work as an extension to the built-in window manager of macOS: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+# cask 'karabiner-elements' # A powerful and stable keyboard customizer for macOS
+cask 'bettertouchtool' # Tool to customise input devices and automate computer systems
+cask 'ubersicht' # Run commands and display their output on the desktop
+
+### OS Settings
+brew 'defaultbrowser' # Command-line tool for getting & setting the default browser
+cask 'launchcontrol' # Create, manage and debug system- and user services
+brew 'mackup' # Keep your Mac's application settings in sync
+brew 'mas' # Mac App Store command-line interface
+brew 'smudge/smudge/nightlight' # A CLI for configuring "Night Shift" on macOS: https://github.com/smudge/nightlight
+brew 'switchaudio-osx' # Change macOS audio source from the command-line
+brew 'trash' # CLI tool that moves files or folder to the trash
+
+### Quicklook
+cask 'apparency' # Inspect application bundles
+cask 'qlcolorcode' # Quick Look plug-in that renders source code with syntax highlighting
+cask 'qlmarkdown' # Quick Look generator for Markdown files
+cask 'quicklook-json' # Quick Look plugin for JSON files
+cask 'quicklook-csv' # Quick Look plugin for CSV files
+cask 'qlstephen' # Quick Look plugin for plaintext files without an extension
+cask 'qlimagesize' # Display image info and preview unsupported formats in QuickLook
+cask 'qlvideo' # Thumbnails, static previews, cover art and metadata for video files
+
+##################################################
+## Software Development                         ##
+##################################################
+
+### Text Editors / IDE's
+# brew 'vim' # Vi 'workalike' with many additional feature
+brew 'neovim' # Ambitious Vim-fork focused on extensibility and agility
+cask 'sublime-text' # Text editor for code, markup and prose
+cask 'visual-studio-code' # Open-source code editor
+
+### Programming Languages
+# brew 'node' # Platform built on V8 to build network applications
+# brew 'python@3.9' # Interpreted, interactive, object-oriented programming language
+# brew 'python@3.10'
+# brew 'python@3.11'
+# brew 'python@3.12'
+
+### GitOps & Automation
+# brew 'awscli' # Official Amazon AWS command-line interface
+brew 'ansible' # Automate deployment, configuration, and upgrading
+# cask 'docker' # Pack, ship and run any application as a lightweight container
+# brew 'terraform' # Tool to build, change, and version infrastructure
+# cask 'vagrant' # Development environment
+
+### Virtual Machines
+# cask 'parallels' # Shell command parallelization utility
+# cask 'virtualbox' # Virtualiser for x86 hardware
+
+### Database
+# cask 'sqlitestudio' # Create, edit, browse SQLite databases
+# cask 'mysqlworkbench' # Visual tool to design, develop and administer MySQL servers
+# cask 'db-browser-for-sqlite' # Browser for SQLite databases
+
+### Source Control
+# cask 'tower' # Git client focusing on power and productivity
+# cask 'sourcetree' # Graphical client for Git version control
+
+### FTP & File Manager
+# cask 'transmit' # File transfer application
+
+### Misc
+# cask 'insomnia' # HTTP and GraphQL Client (Design, debug, and test APIs)
+# cask 'postman' # Collaboration platform for API development
+# cask 'postman-agent' # Desktop agent for Postman on the Web
+# cask 'soapui' # Desktop agent for Postman on the Web
+
+##################################################
+## End-User Tools                               ##
+##################################################
+
+### Web Browsers
+# cask 'brave-browser' # Web browser focusing on privacy
+cask 'firefox' # Web browser
+cask 'google-chrome' # Web browser
+# cask 'opera' # Web browser
+# cask 'opera-gx' # Alternate version of the Opera web browser to complement gaming
+# cask 'vivaldi' " Web browser with built-in email client focusing on customization and control"
+
+### Cloud Storage
+cask 'dropbox' # Client for the Dropbox cloud storage service
+# cask 'google-drive' # Client for the Google Drive storage service
+
+### Menu Bar, Dock & System Utilities
+# cask 'authy' # Two-factor authentication software
+cask 'bitwarden' # Desktop password and login vault
+# cask 'adguard' # Stand alone ad blocker
+# cask 'freedom' # App and website blocker
+cask 'aldente' # Limit battery power load
+# cask 'alfred' # Application launcher and productivity software
+cask 'atext' # Tool to replace abbreviations while typing
+cask 'bartender' # Menu bar icon organiser
+# cask 'fanny' # Notification Center widget and menu bar application to monitor fans
+cask 'hazel' # Automated organisation
+# cask 'loading' # Network activity monitor
+cask 'oversight' # Monitors computer mic and webcam
+cask 'turbo-boost-switcher' # Enable and disable the Intel CPU Turbo Boost feature
+cask 'tuxera-ntfs' # File system and storage management software
+# cask 'ubar' # Window manager and productivity tool
+cask 'audio-hijack' # Records audio from any application
+cask 'soundsource' # Sound and audio controller
+cask 'loopback' # Cable-free audio router
+cask 'aerial' # Apple TV Aerial screensaver
+cask 'xscreensaver' # Screen savers
+# TODO: Add custom screensavers as casks
+
+### Other Utilities
+cask 'a-better-finder-rename' # Renamer for files, music and photos
+# cask 'balenaetcher' # Tool to flash OS images to SD cards & USB drives
+cask 'betterzip' # Utility to create and modify archives
+cask 'beyond-compare' # Compare files and folders
+cask 'downie' # Downloads videos from different websites
+cask 'doxie' # Companion app for scanner hardware
+# cask 'fing' # Network Monitor
+# cask 'malwarebytes' # Warns about malware, adware and spyware
+cask 'path-finder' # File manager
+cask 'raspberry-pi-imager' # Imaging utility to install operating systems to a microSD card
+# cask 'raven-reader' # News reader with flexible settings
+
+### Office Suite
+cask 'microsoft-teams' # Meet, chat, call, and collaborate in just one place
+cask 'microsoft-word' # Word processor
+cask 'microsoft-excel' # Spreadsheet software
+cask 'microsoft-powerpoint' # Presentation software
+cask 'microsoft-outlook' # Email client
+cask 'microsoft-remote-desktop' # Remote desktop client
+cask 'onedrive' # Cloud storage client
+
+### Communication and Conferencing
+cask 'franz' # Messaging app for WhatsApp, Facebook Messenger, Slack, Telegram and more
+# cask 'postbox' # Email client focusing on privacy protection
+cask 'webex' # Video communication and virtual meeting platform
+cask 'zoom' # Video communication and virtual meeting platform
+cask 'krisp' # Noise cancelling application
+cask 'muzzle' # Silence embarrassing notifications while screensharing
+cask 'obs' # Open-source software for live streaming and screen recording
+
+### Remote Access
+cask 'anydesk' # Allows connection to a computer remotely
+cask 'teamviewer' # Remote access and connectivity software focused on security
+# cask 'vnc-viewer' # Remote desktop application focusing on security
+
+### Multimedia Players & Noise Generators
+# cask 'brainfm' # Desktop client for brain.fm
+# cask 'tunein' # Free Internet Radio
+cask 'mpv' # Media player based on MPlayer and mplayer2
+# cask 'plexamp' # Music player focusing on visuals
+cask 'plex' # Home media player (meant to be used sitting in front of your monitor with a keyboard and mouse)
+# cask 'plex-htpc' # Home Theater PC media player (meant to be used sitting on a couch 10 ft away from your tv with a remote)
+cask 'sonos' # Control your Sonos system
+cask 'spotify' # Music streaming service
+cask 'vlc' # Multimedia player
+cask 'handbrake' # Open-source video transcoder available for Linux, Mac, and Windows
+
+##################################################
+## Hobbies                                      ##
+##################################################
+tap 'metafates/mangal'
+
+brew mangal #  The most advanced CLI manga downloader
+cask 'hakuneko' # Manga and anime downloader and reader
+cask 'anki' # Memory training application
+# cask 'steam' # Video game digital distribution service
+
+# cask 'filebot' # Tool for organising and renaming movies, TV shows, anime or music
+# cask 'tradingview' # Charting and social-networking for investment traders
+
+##################################################
+## Mac App Store                                ##
+##################################################
+
+## Privacy & Security
+mas "WireGuard", id:1451685025
+mas "1Blocker", id: 1365531024
+mas "AdGuard for Safari", id: 1440147259
+mas "DuckDuckGo Privacy for Safari", id: 1482920575
+
+## Widgets & Utilities
+mas "Moom", id: 419330170
+mas "Coin Tick", id:1141688067
+mas "World Clock Pro", id: 858446756
+mas "iStatistica Pro", id: 1447778660
+mas "StatsWidgetPlus", id: 1022329158
+mas "Time Out - Break Reminders", id:402592703
+# mas "Simon Says - Moverse en puesto", id: 1160131071
+# mas "Amphetamine", id: 937984704
+# mas "CARROT Weather", id: 993487541
+# mas "Tiempo Dock: Pronóstico", id: 886290397
+# mas "Contacts+", id: 1094748271
+# mas "Parcel", id: 639968404
+# mas # "Deliveries: a package tracker", id: 290983 # No disponible en el país
+# mas "Typeeto: remote BT keyboard", id: 970502923
+# mas "Image2icon - Crea tus iconos", id: 992115977
+mas "Speedtest by Ookla", id: 1153157709
+# mas "Home Inventory", id: 413564952
+# mas "Mela – Recipe Manager", id: 1568924476
+# mas "Boom 3D", id: 1233048948
+
+## Power User & Software Developer
+# mas "Termius", id: 1176074088
+# mas "Xcode", id: 497799835
+# mas "TestFlight", id: 899247664
+# mas "Mactracker", id: 430255202
+# mas "Transmit 5", id: 1436522307
+# mas "Apple Developer", id: 640199958
+# mas "Power JSON Editor", id: 499768540
+# mas "Power YAML Editor", id: 1565766176
+# mas "Power TOML Editor", id: 1587914025
+# mas "Power Plist Editor", id: 1559348223
+# mas "RegExp", id: 1546140065
+# mas "M3U Edit" id: 1579892159
+# mas "Patterns - The Regex App", id: 429449079
+# mas "QRcoder QR Code Generator", id: 1545201375
+# mas "Parallels Desktop", id: 1085114709
+
+## Communication, Social & News
+mas "Telegram", id: 747648890
+# mas "LINE", id: 539883307
+# mas "Trillian", id:412056820
+# mas "Telegram Lite", id: 946399090
+# mas "Twitter", id:1482454543
+# mas "Aviary - for Twitter", id: 1522043420
+# mas "Tweetbot 3 for Twitter", id: 1384080005
+# mas "Slack for Desktop", id: 803453959
+
+## Readers & News
+# mas "Kindle", id: 405399194
+# mas # "Reeder 4", id: 1449412482  # No disponible en el país
+# mas "Reeder 5.", id: 1529448980
+# mas "Leaf - Lector de noticias RSS", id: 576338668
+
+## Office Tools
+# mas "Apple Remote Desktop", id: 409907375
+mas "OmniFocus", id: 1346203938
+mas "OmniGraffle", id: 1142578753
+mas "OmniOutliner", id: 1142578772
+mas "OmniPlan", id: 1460319993
+mas "Fantastical", id: 975937182
+# mas "WeekCalendar - Nube Calendario", id:381059732
+# mas "BusyCal: Calendar & Reminders", id: 1173663647
+# mas "Airmail 5", id: 918858936
+# mas "Mail for Gmail", id: 1216244845
+# mas "Canary Mail App", id: 1236045954
+# mas "Spark - App correo de Readdle", id: 1176895641
+# mas "Trello", id: 1278508951
+# mas "2Do", id: 477670270
+# mas "PomoDone App", id: 1096128050
+# mas "Hours Time Tracking", id: 895933956
+# mas "Timelime - Time tracking", id: 589698946
+# mas "MindNode – Mind Map & Outline", id: 1289197285
+# mas "Inclr: Notas de Mapas Mentales", id: 1060692932
+mas "PDF Expert", id: 1055273043
+# mas "PDFelement–Editor de PDF y OCR", id: 147073213
+# mas "Project Viewer 365", id: 742239147
+# mas "Tincta", id: 448340648
+# mas "Drafts", id: 1435957248
+# mas "iA Writer", id: 775737590
+# mas "Scrivener 3", id: 1310686187
+# mas "Final Draft 12", id: 1550667962
+# mas "Ulysses - Markdown Text Editor", id: 1225570693
+
+## Notes
+# mas "Day One", id: 1055511498
+# mas "Pocket", id: 568494494
+# mas "Instapaper", id:288545208
+# mas "Instapaper Save", id:1481302432
+# mas "Evernote", id:406056744
+
+## Multimedia Capture & Downloads
+# mas "Copy 'Em (Clipboard Manager)", id: 876540291
+# mas "Paste - Clipboard Manager", id: 967805235
+mas "Camtasia 2018", id: 1394213005
+# mas "TechSmith Camtasia 2021", id: 1561617742
+# mas "TechSmith Snagit 2022", id: 1564091330
+# mas "Skitch - Captura, Marca, Envía", id: 425955336
+mas "Lightshot Screenshot", id:526298438
+# mas "Quick Camera", id: 598853070
+# mas "SiteSucker", id:442168834
+# mas "Permute 3", id: 1444998321
+
+## Multimedia Players & Editors
+# mas "Infuse 7", id: 1136220934
+# mas "Silicio for Spotify + iTunes", id: 933627574
+# mas "Soro - For Sonos", id: 1550457805
+# mas "VOX: MP3 & FLAC Music Player", id: 461369673
+# mas "Boom3D: Volume Booster and EQ", id: 1233048948
+# mas "Amazon Prime Video", id: 545519333
+# mas "Affinity Photo", id: 824183456
+mas "Affinity Photo 2", id: 1616822987
+# mas "PhotoScape X - Photo Editor", id: 929507092
+# mas "PhotoBulk: watermark in batch", id: 537211143
+# mas "Final Cut Pro", id: 424389933
+# mas "iMovie", id: 408981434
+# mas "GarageBand", id: 682658836
+# mas "Tag Editor", id: 886882234
+# mas "Downcast", id: 668429425
+
+## File Management and Hard Drive Health
+mas "DaisyDisk", id: 411643860
+# mas "Mountain Duck", id: 1024974133
+# mas "CloudMounter: cifrar archivos", id: 1130254674
+# mas "Gemini 2: The Duplicate Finder", id: 1090488118
+mas "Keka", id: 470158793
+# mas "Sync Folders Pro", id: 522706442
+# mas "TrashMe 3", id: 1490879410
+
+##############################################################################################
+## Fonts                                                                                    ##
+##############################################################################################
+
+# Font Utilities
+brew 'lcdf-typetools' # Font Utilities
+brew 'fontconfig' # Font Utilities
+brew 'fontforge' 
 
 ### Public Fonts
 # cask 'font-inter'
@@ -136,7 +406,7 @@ cask 'alejakun/cask/font-agrevuecyr-roman'
 cask 'alejakun/cask/font-bankgothic-bold'
 cask 'alejakun/cask/font-bankgothic-regular'
 cask 'alejakun/cask/font-bebas-neue-pro'
-cask 'alejakun/cask/font-bebas-neue'
+# cask 'alejakun/cask/font-bebas-neue'
 cask 'alejakun/cask/font-bebas'
 cask 'alejakun/cask/font-benton-sans'
 cask 'alejakun/cask/font-caviar-dreams'
@@ -145,7 +415,7 @@ cask 'alejakun/cask/font-fette-engschrift'
 cask 'alejakun/cask/font-ff-good-pro-cond'
 cask 'alejakun/cask/font-gotham'
 cask 'alejakun/cask/font-harry-p'
-cask 'alejakun/cask/font-marvel'
+# cask 'alejakun/cask/font-marvel'
 cask 'alejakun/cask/font-myriad-pro'
 cask 'alejakun/cask/font-neoprint-m319'
 cask 'alejakun/cask/font-rubber-stamp'
@@ -214,3 +484,90 @@ cask 'alejakun/cask/font-prog-sv-basic-manual-nerd-font'
 cask 'alejakun/cask/font-prog-tex-gyre-cursor-nerd-font'
 cask 'alejakun/cask/font-prog-verily-serif-mono-nerd-font'
 cask 'alejakun/cask/font-prog-whois-mono-nerd-font'
+
+
+
+
+# # Manually installed apps
+
+# # - Station: https://github.com/getstation/desktop-app/releases/
+# # - Yabai Indicator: https://github.com/xiamaz/YabaiIndicator
+# # - Amphetamine Enhancer: https://github.com/x74353/Amphetamine-Enhancer/
+# # - Companion Link: https://www.companionlink.com/outlookformac/
+# # - Purrfect Volume: https://medium.com/trabe/limiting-your-macs-volume-in-2019-f314e20408ab
+# # -                  https://medium.com/@ranhiru/limiting-your-macs-headphone-volume-13671b64e569
+# # - TurboBoostSwitcher Pro: https://app.gumroad.com/d/e8c9e7750e201863e184afbecc5c40c2
+# # - Synology SSL VPN Client: https://www.synology.com/en-us/support/download/RT2600ac#utilities
+# # - Synology Assistant: https://www.synology.com/en-us/support/download/DS920+#utilities
+# # - Presto (Synology file transfer): https://www.synology.com/en-us/support/download/DS920+#utilities
+# # - TP-Link tpPLC: https://www.tp-link.com/mx/support/download/tl-pa4010-kit/v1/
+# # - ITPVSmartersPro: https://www.iptvsmarters.com/download/?download=mac
+
+
+
+
+
+##################################################
+## Deprecated                                   ##
+##################################################
+
+# GNU Utils
+# brew 'binutils'
+# brew 'diffutils'
+# brew 'ed'
+# brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, g-prefixed
+# brew 'gawk'
+# brew 'gnu-indent'
+# brew 'gnu-sed'
+# brew 'gnu-tar'
+# brew 'gnu-which'
+# brew 'gnutls'
+# brew 'grep'
+# brew 'gzip'
+# brew 'wdiff'
+
+# OS X ships a GNU version, but too old
+# brew 'gdb'  # gdb requires further actions to make it work. See `brew info gdb`.
+# brew 'gpatch'
+# brew 'm4'
+# brew 'make'
+# brew 'emacs'
+# brew 'nano'
+
+# Network & Security
+# brew 'openssh'
+# brew 'telnet'
+
+# Other Utilities
+# brew 'rename'
+
+### PHP
+# brew install php # php@8.3
+
+### Java
+# brew 'openjdk@8'
+# brew 'openjdk@11'
+# brew 'openjdk@17'
+
+### Other languages
+# brew 'perl'
+# brew 'ruby'
+# brew 'rust'
+
+### Replace by casks
+# mas "Bitwarden", id: 1352778147
+# mas "Microsoft 365", id: 1450038993
+# mas "Microsoft Word", id: 462054704
+# mas "Microsoft Excel", id: 462058435
+# mas "Microsoft PowerPoint", id: 462062816
+# mas "Microsoft Outlook", id: 985367838
+# mas "Microsoft OneNote", id: 784801555
+# mas "Microsoft OneDrive", id: 823766827
+# mas "Microsoft Remote Desktop", id: 1295203466
+
+### Deprecated
+# mas "Numbers", id: 409203825
+# mas "Pages", id: 409201541
+# mas "Keynote", id: 409183694
+# mas "The Unarchiver", id: 425424353
+# mas "Disk Doctor: System Cleaner", id: 455970963
