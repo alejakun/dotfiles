@@ -1,7 +1,5 @@
 #!/bin/sh
 
-source $HOME/.dotfiles/private/authinfo
-
 wait_for_confirmation() {
 
     confirm=
