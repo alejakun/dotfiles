@@ -1,0 +1,13 @@
+### Ambiente HomeLab
+
+Host github.com
+  Hostname github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/github/id_ed25519
+
+# Host github.com-theboreddev
+#   Hostname github.com
+#   AddKeysToAgent yes
+#   UseKeychain yes
+#   IdentityFile ~/.ssh/id_boreddev
