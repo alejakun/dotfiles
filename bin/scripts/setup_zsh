@@ -1,6 +1,10 @@
 #!/bin/sh
 
-source ../bootstrap
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    source ../set_env.sh
+else
+    source ./set_env.sh
+fi
 
 echo "🖥  Setting up Zsh..."
 
@@ -10,32 +14,32 @@ if ! $(which omz) > /dev/null; then
     echo "💲 Installing Oh My Zsh"
 
     # Install Oh My Zsh
-    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     echo "🔌 Installing Oh My Zsh themes and plugins"
 
     # OhMyZsh Plugins
     echo "🎨 Installing Powerlevel10k"
     if [ ! -d "${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/themes/powerlevel10k" ]; then
-        git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k"
+        git clone --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k
     else
         ask_for_confirmation_input "Do you wish to replace existing installation?"
         echo "Confirm is: $confirm"
         if test $confirm = true; then
             rm -rf "${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/themes/powerlevel10k"
-            git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k"
+            git clone --depth 1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/themes/powerlevel10k
         fi
     fi
 
     echo "🔌 Installing Zsh-Autocomplete"
     if [ ! -d "${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins/zsh-autocomplete" ]; then
-        git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
+        git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete
     else
         ask_for_confirmation_input "Do you wish to replace existing installation for plugin zsh-autocomplete?"
         echo "Confirm is: $confirm"
         if test $confirm = true; then
             rm -rf "${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
-            git clone --depth=1 https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete"
+            git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-autocomplete
         fi
     fi
 
@@ -62,13 +66,14 @@ then
         cd - && rm -rf "$DOTFILES/tmp/fonts/nerd-fonts"
 
         # Powerline Fonts
-        git clone --depth=1 https://github.com/powerline/fonts.git "$DOTFILES/tmp/fonts/powerline"
+        git clone --depth 1 https://github.com/powerline/fonts.git "$DOTFILES/tmp/fonts/powerline"
         cd "$DOTFILES/tmp/fonts/powerline"
         ./install.sh
         cd - && rm -rf "$DOTFILES/tmp/fonts/powerline"
     else
         echo "⏭ Skipping Font install"
     fi
+fi
 
 echo "🚛 Moving Zsh configuration files"
 
