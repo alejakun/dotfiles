@@ -1,6 +1,10 @@
 #!/bin/sh
 
-source bootstrap
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    source ../set_env.sh
+else
+    source ./set_env.sh
+fi
 
 echo "🖥  Setting up other utils..."
 
@@ -9,8 +13,17 @@ echo "🚛 Moving SSH configuration files"
 # Removes ~/.ssh/config if it exists and symlinks the .ssh/config file from the .dotfiles
 mkdir -p "$HOME/.ssh"
 rm -f "$HOME/.ssh/config"
+rm -f "$HOME/.ssh/config.d"
+
 ln -s "$DOTFILES/ssh/config" "$HOME/.ssh/config"
 ln -s "$DOTFILES/ssh/config.d" "$HOME/.ssh/config.d"
+
+cd "$DOTFILES/private/keys/"
+for dir in */ ; do
+    dir=${dir%?}
+    rm -f "$HOME/.ssh/$dir"
+    ln -s "$DOTFILES/private/keys/$dir" "$HOME/.ssh/$dir"
+done
 
 echo "🚛 Creating Randomize Screensaver Agent"
 
