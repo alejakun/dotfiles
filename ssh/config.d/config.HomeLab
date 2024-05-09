@@ -14,14 +14,14 @@ Host rbp
    HostName rbp.alejakun.io
    Port 22
    User alex
-   IdentityFile ~/.ssh/homelab/id_rsa
+   IdentityFile ~/.ssh/homelab/homelab/id_rsa
 
 Host oci
    HostName homelab.alejakun.io
    Port 22
    # User opc
    User ubuntu
-   IdentityFile ~/.ssh/oci/homelab-ssh-key.key
+   IdentityFile ~/.ssh/homelab/homelab/oci-ssh-key.key
 
 Host *
    AddKeysToAgent yes
