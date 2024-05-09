@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./bootstrap.sh
+source ./set_env.sh
 
 echo "🖥  Setting up your System..."
 
@@ -19,22 +19,22 @@ then
     echo "🍎 Setting up Apple System"
 
     # Install macOS Apps & Packages
-    source ./scripts/brew_install
+    # source ./scripts/brew_install
 
     source ./scripts/setup_zsh
     chsh -s /usr/local/bin/zsh  # This is not required in Mac since Catalina
 
-    source ./scripts/setup_system_files
     source ./scripts/setup_git
-    source ./scripts/setup_ssh
+
+    source ./scripts/setup_system_files
     source ./scripts/setup_tmux
     source ./scripts/setup_vim
-    # source ./scripts/setup_terminal
-    source ./scripts/setup_launchctl
+    source ./scripts/setup_terminal
+    # source ./scripts/setup_karabiner
 
     # Set macOS preferences - we will run this last because this will reload the shell
     # and reboot the sytem
-    source ./scripts/setup_macos
+    source ./scripts/setup_system_settings
 
 else
     # Other

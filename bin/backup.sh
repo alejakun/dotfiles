@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./bootstrap.sh
+source ./set_env.sh
 
 if [ $# -eq 0 ]; then
     echo "No command supplied, supply backup or restore"
