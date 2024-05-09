@@ -1,10 +1,12 @@
 #!/bin/sh
 
+source ../bootstrap.sh
+
 echo "🖥  Setting up Terminal..."
 
-echo "🚛 Opening themes"
+echo "🚛 Opening Terminal themes"
 
-cd "$DOTFILES/macos/themes/"
+cd "$DOTFILES/macos/terminal/"
 open *.terminal
 cd -
 
@@ -12,6 +14,6 @@ echo "🖥  Setting up iTerm2..."
 
 echo "🚛 Opening themes"
 
-cd "$DOTFILES/macos/themes/"
+cd "$DOTFILES/macos/iterm2/"
 open *.itermcolors
 cd -

@@ -1,19 +1,17 @@
 #!/bin/sh
 
+source ../bootstrap
+
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
 
     echo "🍺 Installing Homebrew"
 
     # Install Homebrew for each OS type
-    if test "$(uname)" = "Darwin";
+    if test "$(uname)" = "Darwin" || test "$(uname)" = "Linux";
     then
         # MacOS
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    elif test "$(uname)" = "Linux";
-    then
-        # Linux
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     else
         # Other
         echo "$(uname) is not supported" >&2

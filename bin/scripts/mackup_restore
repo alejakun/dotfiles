@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ../bootstrap
+
 ask_for_confirmation_input "Do you wish to restore Mackup Backup?"
 
 if test $confirm = true; then

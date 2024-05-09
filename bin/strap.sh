@@ -5,7 +5,7 @@
 ## CUSTOM
 
 # https://strap.mikemcquaid.com
-source ../private/authinfo
+source $HOME/.dotfiles/private/authinfo
 
 # Verify environment
 if [ -z "$DOTFILES" ] || [ -z "$GIT_EMAIL" ] || [ -z "$GIT_USER" ] || [ -z "$HOMEBREW_GITHUB_API_TOKEN" ] || [ -z "$HOMEBREW_BREWFILE" ] || [ -z "$STRAP_GIT_EMAIL" ] || [ -z "$STRAP_GITHUB_USER" ] || [ -z "$STRAP_GITHUB_TOKEN" ]; then

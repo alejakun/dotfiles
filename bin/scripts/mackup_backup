@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ../bootstrap
+
 echo "💾 Backing up application settings with Mackup..."
 
 # Ensure .mackup.cfg is using the .dotfiles version

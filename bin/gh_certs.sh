@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ./bootstrap.sh
+
 echo "💲  Generating a new SSH key for GitHub..."
 
 # Generating a new SSH key

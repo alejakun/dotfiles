@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source bootstrap
+source ./bootstrap.sh
 
 echo "🖥  Setting up your System..."
 
@@ -19,26 +19,26 @@ then
     echo "🍎 Setting up Apple System"
 
     # Install macOS Apps & Packages
-    source ./brew_install
-    source ./restore_mackup.sh
+    source ./scripts/brew_install
 
-    source ./setup_zsh
+    source ./scripts/setup_zsh
     chsh -s /usr/local/bin/zsh  # This is not required in Mac since Catalina
 
-    source ./setup_git
-    source ./setup_ssh
-    source ./setup_tmux
-    source ./setup_vim
-    # source ./setup_terminal
-    source ./setup_launchctl
+    source ./scripts/setup_system_files
+    source ./scripts/setup_git
+    source ./scripts/setup_ssh
+    source ./scripts/setup_tmux
+    source ./scripts/setup_vim
+    # source ./scripts/setup_terminal
+    source ./scripts/setup_launchctl
 
     # Set macOS preferences - we will run this last because this will reload the shell
     # and reboot the sytem
-    source ./setup_macos
+    source ./scripts/setup_macos
 
 else
     # Other
-    echo "$(uname) is not supported" >&2
+    echo "🚫  $(uname) is not supported" >&2
     exit 1
 fi
 

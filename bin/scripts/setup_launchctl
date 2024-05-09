@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Creating Randomize Screensaver Agent
-rm -f ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-rm -f /usr/local/bin/randomize_screensaver.sh
-ln -s ~/.dotfiles/launchctl/agents/io.alejakun.screensavers.plist  ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-ln -s ~/.dotfiles/launchctl/scripts/randomize_screensaver.sh /usr/local/bin/randomize_screensaver.sh
-launchctl bootstrap gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-# launchctl bootout gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ../bootstrap
+
 echo "🖥  Setting up Tmux..."
 
 echo "🐑  Cloning tmux repository"

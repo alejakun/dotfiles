@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source ../bootstrap
+
 echo "🖥  Setting up Vim..."
 
 # Installing Spacevim from: https://spacevim.org

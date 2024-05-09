@@ -1,5 +1,9 @@
 #!/bin/sh
 
+source ../bootstrap
+
+source $HOME/.dotfiles/private/authinfo
+
 echo "🖥  Setting up git..."
 
 echo "🚛 Moving Git configuration files"

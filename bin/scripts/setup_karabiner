@@ -1,0 +1,10 @@
+#!/bin/sh
+
+source bootstrap
+
+echo "⌨️  Setting up Karabiner..."
+
+# echo "🚛 Moving karabiner configuration file"
+
+# rm -f "~/.config/karabiner/karabiner.json"
+# cp "$DOTFILES/macos/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"

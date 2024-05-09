@@ -1,13 +1,32 @@
 #!/bin/sh
 
+source bootstrap
+
 echo "🖥  Setting up other utils..."
 
-echo "🚛 Moving etc/hosts file"
+echo "🚛 Moving SSH configuration files"
 
-rm -f "/etc/hosts"
-ln -s "$DOTFILES/etc/hosts" "/etc/hosts"
+# Removes ~/.ssh/config if it exists and symlinks the .ssh/config file from the .dotfiles
+mkdir -p "$HOME/.ssh"
+rm -f "$HOME/.ssh/config"
+ln -s "$DOTFILES/ssh/config" "$HOME/.ssh/config"
+ln -s "$DOTFILES/ssh/config.d" "$HOME/.ssh/config.d"
+
+echo "🚛 Creating Randomize Screensaver Agent"
+
+rm -f ~/Library/LaunchAgents/io.alejakun.screensavers.plist
+rm -f /usr/local/bin/randomize_screensaver.sh
+ln -s ~/.dotfiles/macos/launchctl/agents/io.alejakun.screensavers.plist  ~/Library/LaunchAgents/io.alejakun.screensavers.plist
+ln -s ~/.dotfiles/macos/launchctl/scripts/randomize_screensaver.sh /usr/local/bin/randomize_screensaver.sh
+macos/launchctl bootstrap gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
+# macos/launchctl bootout gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
+
+# echo "🚛 Moving etc/hosts file"
+
+# rm -f "/etc/hosts"
+# ln -s "$DOTFILES/etc/hosts" "/etc/hosts"
 
 # echo "🚛 Moving karabiner configuration file"
 
 # rm -f "~/.config/karabiner/karabiner.json"
-# cp "$DOTFILES/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+# cp "$DOTFILES/macos/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ../bootstrap
+
 # ~/.macos — https://mths.be/macos
 
 echo "🖥  Setting up mac System Preferences..."
