@@ -1,9 +1,7 @@
 #!/bin/sh
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    source ../set_env.sh
-else
-    source ./set_env.sh
+    source "~/.dotfiles/bin/set_env.sh"
 fi
 
 echo "🖥  Setting up other utils..."
@@ -18,28 +16,32 @@ rm -f "$HOME/.ssh/config.d"
 ln -s "$DOTFILES/ssh/config" "$HOME/.ssh/config"
 ln -s "$DOTFILES/ssh/config.d" "$HOME/.ssh/config.d"
 
+# Loads all available private keys directories on dotfiles
+current_path=$(pwd)
 cd "$DOTFILES/private/keys/"
 for dir in */ ; do
     dir=${dir%?}
     rm -f "$HOME/.ssh/$dir"
     ln -s "$DOTFILES/private/keys/$dir" "$HOME/.ssh/$dir"
 done
-
-echo "🚛 Creating Randomize Screensaver Agent"
-
-rm -f ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-sudo rm -f /usr/local/bin/randomize_screensaver.sh
-ln -s ~/.dotfiles/macos/launchctl/agents/io.alejakun.screensavers.plist  ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-sudo ln -s ~/.dotfiles/macos/launchctl/scripts/randomize_screensaver.sh /usr/local/bin/randomize_screensaver.sh
-sudo launchctl bootstrap gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
-# macos/launchctl bootout gui/`id -u` ~/Library/LaunchAgents/io.alejakun.screensavers.plist
+cd $current_path
 
 # echo "🚛 Moving etc/hosts file"
 
 # rm -f "/etc/hosts"
 # ln -s "$DOTFILES/etc/hosts" "/etc/hosts"
 
-# echo "🚛 Moving karabiner configuration file"
+# Requires temporarily disabling System Integrity Protection
+# https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection
 
-# rm -f "~/.config/karabiner/karabiner.json"
-# cp "$DOTFILES/macos/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+# echo "🚛 Creating Randomize Screensaver Agent"
+
+# mkdir -p "$HOME/Library/LaunchAgents"
+# sudo mkdir -p "/usr/local/bin/"
+
+# rm -f "$HOME/Library/LaunchAgents/io.alejakun.screensavers.plist"
+# sudo rm -f "/usr/local/bin/randomize_screensaver.sh"
+# ln -s "$DOTFILES/macos/launchctl/agents/io.alejakun.screensavers.plist"  "$HOME/Library/LaunchAgents/io.alejakun.screensavers.plist"
+# sudo ln -s "$DOTFILES/macos/launchctl/scripts/randomize_screensaver.sh" "/usr/local/bin/randomize_screensaver.sh"
+# launchctl bootstrap gui/`id -u` "~/Library/LaunchAgents/io.alejakun.screensavers.plist"
+# # launchctl bootout gui/`id -u` "~/Library/LaunchAgents/io.alejakun.screensavers.plist"
