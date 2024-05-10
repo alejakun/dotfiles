@@ -9,7 +9,6 @@ wait_for_confirmation() {
     do
         read -p "$message" confirm
     done
-
 }
 
 ask_for_confirmation_input() {
@@ -28,7 +27,6 @@ ask_for_confirmation_input() {
     else
         confirm=false
     fi
-
 }
 
 keep_alive_sudo() {
@@ -37,10 +35,8 @@ keep_alive_sudo() {
     sudo -v
     # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 }
 
 open_app() {
-
     open -a "$1"
 }
