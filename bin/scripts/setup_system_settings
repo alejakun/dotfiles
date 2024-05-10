@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-source ../bootstrap
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    source "~/.dotfiles/bin/set_env.sh"
+fi
 
 # ~/.macos — https://mths.be/macos
 

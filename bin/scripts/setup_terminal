@@ -1,6 +1,8 @@
 #!/bin/sh
 
-source ../bootstrap.sh
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    source "~/.dotfiles/bin/set_env.sh"
+fi
 
 echo "🖥  Setting up Terminal..."
 
