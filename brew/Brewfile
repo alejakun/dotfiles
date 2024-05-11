@@ -8,7 +8,6 @@
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'homebrew/cask-versions'
 
 ### Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
@@ -45,6 +44,7 @@ brew 'tmux' # Terminal multiplexer
 ##################################################
 
 brew 'hub' # Add GitHub support to git on the command-line
+brew 'gh' # GitHub support to git on the command-line
 cask 'git-credential-manager' # Requieres Password - Cross-platform Git credential storage for multiple hosting providers # https://github.com/GitCredentialManager/git-credential-manager
 
 ##################################################
@@ -238,7 +238,7 @@ cask 'handbrake' # Open-source video transcoder available for Linux, Mac, and Wi
 ##################################################
 tap 'metafates/mangal'
 
-brew mangal #  The most advanced CLI manga downloader
+brew 'mangal' #  The most advanced CLI manga downloader
 cask 'hakuneko' # Manga and anime downloader and reader
 cask 'anki' # Memory training application
 # cask 'steam' # Video game digital distribution service
