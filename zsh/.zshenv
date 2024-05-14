@@ -20,4 +20,4 @@ export PATH=/usr/local/bin:$HOME/bin:$PATH
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/openjdk@8/bin:$PATH"
 
 # Path to private environment
-source "$DOTFILES/private/.env"
+source "$DOTFILES/private/.zshenv"
