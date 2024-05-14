@@ -278,3 +278,9 @@
         prune = true
 # [credential]
 # 	/usr/local/share/gcm-core/git-credential-managerhelper = 
+[credential]
+	helper = 
+	helper = osxkeychain
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
