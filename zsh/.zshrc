@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Enable completions
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -22,16 +22,30 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # For more plugins check: https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins
-plugins=(history dirhistory common-aliases zsh-autocomplete sudo git tmux docker docker-compose macos vscode )
+plugins=(history dirhistory common-aliases sudo git tmux docker docker-compose macos vscode )
 
+fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 source $ZSH/oh-my-zsh.sh
 
 # powerlevel10k
-source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+# zsh-autocomplete
+source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # zsh-syntax-highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# autoenv
+source $(brew --prefix)/opt/autoenv/activate.sh
+# z
+source $(brew --prefix)/etc/profile.d/z.sh
+# thefuck
+eval $(thefuck --alias)
+
+# Other Plugins to consider:
+# https://github.com/jeffreytse/zsh-vi-mode
+# https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv
+# https://github.com/Aloxaf/fzf-tab
 
 # Source alias list
 source $DOTFILES/zsh/aliases.zsh
