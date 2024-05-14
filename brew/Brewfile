@@ -38,6 +38,7 @@ brew 'midnight-commander' # Terminal-based visual file manager
 brew 'tree' # Display directories as trees (with optional color/HTML output
 brew 'tmux' # Terminal multiplexer
 # brew 'unzip' # Extraction utility for .zip compressed archives
+brew 'z' # Tracks most-used directories to make cd smarter
 
 ##################################################
 ## Github Utilities ##
@@ -66,8 +67,11 @@ brew 'zsh' # UNIX shell (command interpreter)
 ### Oh-My-Zsh themes and plugins
 brew 'powerlevel10k' # Theme for zsh
 brew 'zsh-autosuggestions' # Fish-like fast/unobtrusive autosuggestions for zsh
+brew 'zsh-autocomplete' # Real-time type-ahead completion for Zsh
 brew 'zsh-syntax-highlighting' # Fish shell like syntax highlighting for zsh
 brew 'zsh-completions' # Zsh completion for conda - To enable check: https://formulae.brew.sh/formula/zsh-completions#default
+brew 'thefuck' # Programmatically correct mistyped console commands
+brew 'autoenv' # Per-project, per-directory shell environments
 
 ##################################################
 ## MacOS System                                 ##
@@ -86,7 +90,7 @@ brew 'defaultbrowser' # Command-line tool for getting & setting the default brow
 cask 'launchcontrol' # Create, manage and debug system- and user services
 brew 'mackup' # Keep your Mac's application settings in sync
 brew 'mas' # Mac App Store command-line interface
-brew 'smudge/smudge/nightlight' # A CLI for configuring "Night Shift" on macOS: https://github.com/smudge/nightlight
+# brew 'smudge/smudge/nightlight' # A CLI for configuring "Night Shift" on macOS: https://github.com/smudge/nightlight
 brew 'switchaudio-osx' # Change macOS audio source from the command-line
 brew 'trash' # CLI tool that moves files or folder to the trash
 
@@ -99,6 +103,7 @@ cask 'quicklook-csv' # Quick Look plugin for CSV files
 cask 'qlstephen' # Quick Look plugin for plaintext files without an extension
 cask 'qlimagesize' # Display image info and preview unsupported formats in QuickLook
 cask 'qlvideo' # Thumbnails, static previews, cover art and metadata for video files
+brew 'syntax-highlight' # Quicklook extension for source files
 
 ##################################################
 ## Software Development                         ##
@@ -106,7 +111,7 @@ cask 'qlvideo' # Thumbnails, static previews, cover art and metadata for video f
 
 ### Text Editors / IDE's
 # brew 'vim' # Vi 'workalike' with many additional feature
-brew 'neovim' # Ambitious Vim-fork focused on extensibility and agility
+# brew 'neovim' # Ambitious Vim-fork focused on extensibility and agility
 cask 'sublime-text' # Text editor for code, markup and prose
 cask 'visual-studio-code' # Open-source code editor
 
@@ -119,7 +124,7 @@ cask 'visual-studio-code' # Open-source code editor
 
 ### GitOps & Automation
 # brew 'awscli' # Official Amazon AWS command-line interface
-brew 'ansible' # Automate deployment, configuration, and upgrading
+# brew 'ansible' # Automate deployment, configuration, and upgrading
 # cask 'docker' # Pack, ship and run any application as a lightweight container
 # brew 'terraform' # Tool to build, change, and version infrastructure
 # cask 'vagrant' # Development environment
