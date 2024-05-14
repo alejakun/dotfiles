@@ -47,8 +47,8 @@ fi
 if test "$(uname)" = "Darwin";
 then
     # MacOS
-    if test -e "$HOMEBREW_BREWFILE_MACOS"; then
-        brew bundle --file="$HOMEBREW_BREWFILE_MACOS"
+    if test -e "$HOMEBREW_BREWFILE"; then
+        brew bundle --file="$HOMEBREW_BREWFILE"
     fi
     
 fi
