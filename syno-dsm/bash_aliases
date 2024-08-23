@@ -84,6 +84,8 @@ alias ll='ls -alh'
 alias dirsize='sudo du -hx --max-depth=1'
 
 # SYNOLOGY DSM COMMANDS
+# https://mariushosting.com/synology-basic-command-lines-for-dsm-7/
+
 alias servicelist='sudo synoservicecfg --list'
 alias servicestatus='sudo synoservice --status'
 alias servicestop='sudo synoservicecfg --stop'
