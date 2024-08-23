@@ -9,6 +9,8 @@ Host nasty
    HostName nasty.alejakun.io
    Port 2222
    User alex
+   IdentityFile ~/.ssh/homelab/id_rsa
+   #RemoteCommand /usr/local/bin/zsh
 
 Host rbp
    HostName rbp.alejakun.io
