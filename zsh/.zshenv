@@ -21,3 +21,16 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/open
 
 # Path to private environment
 source "$DOTFILES/private/.zshenv"
+
+# Terminal configuration
+#export TERM=screen-256color
+
+# Path to user home base
+export HOME_BASE=/Users
+
+# Extra path locations
+export PATH=${PATH}
+
+# Path to SSH Logs
+export SSH_LOGS=$HOME/ssh_logs
+export CTX=default
