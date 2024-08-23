@@ -27,7 +27,7 @@ alias egrep='egrep --color=auto'
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipx="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
@@ -41,6 +41,10 @@ alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/La
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# SSH
+alias logdir="mkdir -p $SSH_LOGS"
+alias log="tee $SSH_LOGS/$CTX-`date +%Y%m%d%H%M`.log"
 
 # Docker
 alias dexec="(){docker exec -it $1 /bin/bash;}"
@@ -67,4 +71,4 @@ alias resolve="git add . && git commit --no-edit"
 # Example for alias with parameters from:
 # https://stackoverflow.com/a/39395740
 # alias example='(){ echo Your arg was $1. ;}'
-alias addalias='(){ echo "alias $1" >> $DOTFILES/zsh/aliases.zsh  && source $DOTFILES/zsh/aliases.zsh; }'
+alias addalias='(){ echo "alias $1" >> $DOTFILES/zsh/.zshalias  && source $DOTFILES/zsh/aliases.zsh; }'
