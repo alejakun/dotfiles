@@ -731,6 +731,23 @@ open *.itermcolors
 cd -
 
 # Update Key Mappings, Color Profile, 
+
+# Good fonts to test:
+# Meslo LGL Nerd Font: For text editor
+# Inconsolata LGC Nerd Font: For terminal
+
+# DejaVu Sans Mono for Powerline
+# RobotoMono Nerd Font
+# Consolas Nerd Font
+# JetBrainsMonoNL Nerd Font
+# Source Code Pro for Powerline
+# FiraCode Nerd Font
+# Iosevka Nerd Font
+# Hack Nerd Font
+# SpaceMono Nerd Font
+# PT Mono
+# Corbel
+
 confirm=
 while [[ "$confirm" != "y" && "$confirm" != "Y" && "$confirm" != "yes" && "$confirm" != "Yes" && "$confirm" != "YES" ]]
 do
