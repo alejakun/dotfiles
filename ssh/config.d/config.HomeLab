@@ -6,7 +6,7 @@ Host srm
    User alex
 
 Host nasty
-   HostName nasty.alejakun.io
+   HostName nas.alejakun.io
    Port 2222
    User alex
    IdentityFile ~/.ssh/homelab/id_rsa
