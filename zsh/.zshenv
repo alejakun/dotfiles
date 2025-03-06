@@ -18,6 +18,7 @@ export PATH=/usr/local/bin:$HOME/bin:$PATH
 
 # Add Java to $PATH
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/openjdk@8/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 
 # Path to private environment
 source "$DOTFILES/private/.zshenv"
