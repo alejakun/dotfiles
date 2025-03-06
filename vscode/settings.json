@@ -1,0 +1,77 @@
+{
+
+    // ### LOOK & FEEL ### //
+
+    // Good fonts to test:
+    // Inconsolata LGC Nerd Font
+    // DejaVu Sans Mono for Powerline
+    // RobotoMono Nerd Font
+    // Consolas Nerd Font
+    // JetBrainsMonoNL Nerd Font
+    // Source Code Pro for Powerline
+    // FiraCode Nerd Font
+    // Iosevka Nerd Font
+    // Meslo LGL Nerd Font
+    // Hack Nerd Font
+    // SpaceMono Nerd Font
+    // PT Mono
+    // Corbel
+
+    // Controls the font family.
+    "editor.fontFamily": "'Meslo LGL Nerd Font', 'PragmataProMono Nerd Font', 'EnvyCodeR Nerd Font', Monaco, 'Courier New', monospace",
+
+    // Controls the font size.
+    "editor.fontSize": 12.5,
+
+    // Controls the font family of the terminal. Defaults to `editor.fontFamily`'s value.
+    "terminal.integrated.fontFamily": "'Inconsolata LGC Nerd Font', 'MesloLGS NF', 'EnvyCodeR Nerd Font'",
+
+    // Controls the font size in pixels of the terminal.
+    "terminal.integrated.fontSize": 11,
+
+    // ### BEHAVIOR ### //
+
+
+    "application.shellEnvironmentResolutionTimeout": 30,
+    "explorer.confirmDelete": false,
+
+    "python.envFile": "${workspaceFolder}/.venv",    
+    "[python]": {
+        "editor.formatOnType": true
+    },
+
+
+    // ### EXTENSIONS ### //
+
+    // Icon Theme
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Material Theme",
+
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "tabnine.experimentalAutoImports": true,
+    "todo-tree.tree.showScanModeButton": false,
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+
+    // ### REMOTE EXTENSIONS ### //
+
+    // Controls de remote extensions when working with "Remote - SSH" 
+    "remote.SSH.defaultExtensions": [
+        "eamodio.gitlens",
+        "mutantdino.resourcemonitor",
+        "ms-azuretools.vscode-docker"
+    ],
+}
