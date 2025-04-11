@@ -93,6 +93,7 @@ brew 'mas' # Mac App Store command-line interface
 # brew 'smudge/smudge/nightlight' # A CLI for configuring "Night Shift" on macOS: https://github.com/smudge/nightlight
 brew 'switchaudio-osx' # Change macOS audio source from the command-line
 brew 'trash' # CLI tool that moves files or folder to the trash
+cask 'open-core'
 
 ### Quicklook
 cask 'apparency' # Inspect application bundles
@@ -121,6 +122,7 @@ cask 'visual-studio-code' # Open-source code editor
 # brew 'python@3.10'
 # brew 'python@3.11'
 # brew 'python@3.12'
+# cask 'jupyter-notebook-viewer'
 
 ### GitOps & Automation
 # brew 'awscli' # Official Amazon AWS command-line interface
@@ -150,6 +152,7 @@ cask 'visual-studio-code' # Open-source code editor
 # cask 'postman' # Collaboration platform for API development
 # cask 'postman-agent' # Desktop agent for Postman on the Web
 # cask 'soapui' # Desktop agent for Postman on the Web
+cask 'touch-portal' # Shortcuts from other screen
 
 ##################################################
 ## End-User Tools                               ##
@@ -282,6 +285,8 @@ mas "Speedtest by Ookla", id: 1153157709
 # mas "Home Inventory", id: 413564952
 # mas "Mela – Recipe Manager", id: 1568924476
 # mas "Boom 3D", id: 1233048948
+# mas "Uninstaller sensei", id: 1373706803
+# mas "Focusbar", id: 443439127
 
 ## Power User & Software Developer
 # mas "Termius", id: 1176074088
@@ -318,10 +323,10 @@ mas "Telegram", id: 747648890
 
 ## Office Tools
 # mas "Apple Remote Desktop", id: 409907375
-mas "OmniFocus", id: 1346203938
-mas "OmniGraffle", id: 1142578753
-mas "OmniOutliner", id: 1142578772
-mas "OmniPlan", id: 1460319993
+mas "OmniFocus 4", id: 1346203938
+mas "OmniGraffle 7", id: 1142578753
+mas "OmniOutliner 5", id: 1142578772
+mas "OmniPlan 4", id: 1460319993
 mas "Fantastical", id: 975937182
 # mas "WeekCalendar - Nube Calendario", id:381059732
 # mas "BusyCal: Calendar & Reminders", id: 1173663647
