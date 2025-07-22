@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    source ~/.dotfiles/bin/set_env.sh
+fi
+
+echo "🐟  Setting up Fish..."
+
+echo "🚛 Moving Fish configuration files"
+
+# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
+rm -f "$HOME/.config/fish"
+ln -s "$DOTFILES/fish/" "$HOME/.config/fish"
+
+rm -f "HOME/.config/env.fish"
+ln -s "$DOTFILES/private/env.fish" "$HOME/.config/env.fish"

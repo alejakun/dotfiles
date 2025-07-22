@@ -25,6 +25,7 @@ then
     source ./scripts/brew_install
     source ./scripts/gem_install
 
+    source ./scripts/setup_fish
     source ./scripts/setup_zsh
     # chsh -s /usr/local/bin/zsh  # This is not required in Mac since Catalina
 
