@@ -11,6 +11,3 @@ echo "🚛 Moving Fish configuration files"
 # Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
 rm -f "$HOME/.config/fish"
 ln -s "$DOTFILES/fish/" "$HOME/.config/fish"
-
-rm -f "HOME/.config/env.fish"
-ln -s "$DOTFILES/private/env.fish" "$HOME/.config/env.fish"
