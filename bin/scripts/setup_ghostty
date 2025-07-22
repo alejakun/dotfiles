@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    source ~/.dotfiles/bin/set_env.sh
+fi
+
+echo "👻  Setting up Ghostty..."
+
+echo "🚛 Moving Ghostty configuration files"
+
+# Removes .zshrc from $HOME (if it exists) and symlinks the .zshrc file from the .dotfiles
+rm -f "$HOME/.config/ghostty/config"
+ln -s "$DOTFILES/ghostty/config" "$HOME/.config/ghostty/config"
