@@ -21,7 +21,7 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/open
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$(brew --prefix)/opt/python@3.10/libexec/bin:$PATH"
 
 # Path to private environment
-source "$DOTFILES/private/.zshenv"
+source "$DOTFILES/private/.env"
 
 # Terminal configuration
 #export TERM=screen-256color
