@@ -24,6 +24,7 @@ then
     # Install macOS Apps & Packages
     source ./scripts/brew_install
     source ./scripts/gem_install
+    source ./scripts/other_install
 
     source ./scripts/setup_fish
     source ./scripts/setup_zsh
@@ -32,7 +33,7 @@ then
     source ./scripts/setup_tmux
     source ./scripts/setup_vim
     source ./scripts/setup_terminal
-    # source ./scripts/setup_karabiner
+    source ./scripts/setup_misc
 
     # Set macOS preferences - we will run this last because this will reload the shell
     # and reboot the sytem
