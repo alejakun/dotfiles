@@ -13,10 +13,17 @@ git clone https://github.com/gpakosz/.tmux.git "$DOTFILES/tmp/tmux"
 
 echo "🚛 Moving tmux configuration files"
 
-rm -f "$HOME/.tmux.conf"
-cp "$DOTFILES/tmp/tmux/.tmux.conf" "$HOME/.tmux.conf"
-rm -f "$HOME/.tmux.conf.local"
-cp "$DOTFILES/tmp/tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
+# OhMyTmux!
 
-echo "🧹 Cleaning up"
-rm -rf "$DOTFILES/tmp/tmux"
+# rm -f "$HOME/.tmux.conf"
+# cp "$DOTFILES/tmp/tmux/.tmux.conf" "$HOME/.tmux.conf"
+# rm -f "$HOME/.tmux.conf.local"
+# cp "$DOTFILES/tmp/tmux/.tmux.conf.local" "$HOME/.tmux.conf.local"
+
+# echo "🧹 Cleaning up"
+# rm -rf "$DOTFILES/tmp/tmux"
+
+# Personal tmux
+
+rm -f "$HOME/.config/tmux/tmux.conf"
+ln -s "$DOTFILES/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
