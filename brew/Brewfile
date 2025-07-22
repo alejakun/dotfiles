@@ -7,7 +7,6 @@
 ### Main Taps
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
 
 ### Make sure apps get installed in system Applications dir
 cask_args appdir: '/Applications'
@@ -35,10 +34,31 @@ brew 'git' # Distributed revision control system
 brew 'less' # Pager program similar to more
 brew 'midnight-commander' # Terminal-based visual file manager
 # brew 'rsync' # Utility that provides fast incremental file transfer
-brew 'tree' # Display directories as trees (with optional color/HTML output
+brew 'eza' # Modern, maintained replacement for ls
 brew 'tmux' # Terminal multiplexer
 # brew 'unzip' # Extraction utility for .zip compressed archives
-brew 'z' # Tracks most-used directories to make cd smarter
+brew 'zoxide' # Shell extension to navigate your filesystem faster
+brew 'fzf' # Command-line fuzzy finder written in Go
+brew 'htop' # Improved top (interactive process viewer)
+brew 'btop' # Resource monitor. C++ version and continuation of bashtop and bpytop
+brew 'bat' # Clone of cat(1) with syntax highlighting and Git integration
+
+brew 'jq' # 'Lightweight and flexible command-line JSON processor'
+brew 'yq' # Process YAML, JSON, XML, CSV and properties documents from the CLI
+
+brew 'yazi' # Blazing fast terminal file manager written in Rust, based on async I/O
+            # Additional dependencies:
+            # ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick font-symbols-only-nerd-font
+
+brew 'stow' # Organize software neatly under a single directory tree (e.g. /usr/local)
+brew 'lazygit' # Simple terminal UI for git commands
+brew 'lazydocker' # Lazier way to manage everything docker
+#brew 'lazyvim' # https://www.lazyvim.org/
+brew 'luarocks' # Package manager for the Lua programming language (required by lazyvim)
+
+# DEPRECATED
+# brew 'tree' # DEPRECATED by eza | Display directories as trees (with optional color/HTML output 
+# brew 'z' # DEPRECATED by zoxide | Tracks most-used directories to make cd smarter
 
 ##################################################
 ## Github Utilities ##
@@ -54,14 +74,17 @@ cask 'git-credential-manager' # Requieres Password - Cross-platform Git credenti
 
 tap 'romkatv/powerlevel10k'
 
-### Terminal
-cask 'iterm2' # Terminal emulator as alternative to Apple's Terminal app
-
 ### OS X ships a GNU version, but too old
 brew 'bash' # Bourne-Again SHell, a UNIX command interpreter
-
-### ZSH
 brew 'zsh' # UNIX shell (command interpreter)
+brew 'fish' # User-friendly command-line shell for UNIX-like operating systems
+
+### Terminal
+# cask 'iterm2' # Terminal emulator as alternative to Apple's Terminal app
+# cask 'itermai' # Enable generative AI features in iTerm2
+cask 'ghostty' # Terminal emulator that uses platform-native UI and GPU acceleration
+
+### Prompts
 # brew 'starship' # Cross-shell prompt for astronauts - Alternative to Powerlevel10K https://www.reddit.com/r/zsh/comments/10k0g93/comment/j5nvac2/?utm_source=share&utm_medium=web2x&context=3
 
 ### Oh-My-Zsh themes and plugins
@@ -112,15 +135,15 @@ brew 'syntax-highlight' # Quicklook extension for source files
 
 ### Text Editors / IDE's
 # brew 'vim' # Vi 'workalike' with many additional feature
-# brew 'neovim' # Ambitious Vim-fork focused on extensibility and agility
+brew 'neovim' # Ambitious Vim-fork focused on extensibility and agility
 cask 'sublime-text' # Text editor for code, markup and prose
 cask 'visual-studio-code' # Open-source code editor
-
+cask 'obsidian' # Knowledge base that works on top of a local folder of plain text Markdown files
 ### Programming Languages
 # brew 'node' # Platform built on V8 to build network applications
 # brew 'python@3.9' # Interpreted, interactive, object-oriented programming language
 # brew 'python@3.10'
-# brew 'python@3.11'
+brew 'python@3.11'
 # brew 'python@3.12'
 # cask 'jupyter-notebook-viewer'
 
@@ -130,6 +153,7 @@ cask 'visual-studio-code' # Open-source code editor
 # cask 'docker' # Pack, ship and run any application as a lightweight container
 # brew 'terraform' # Tool to build, change, and version infrastructure
 # cask 'vagrant' # Development environment
+cask 'gcloud-cli'  # Set of tools to manage resources and applications hosted on Google Cloud
 
 ### Virtual Machines
 # cask 'parallels' # Shell command parallelization utility
@@ -152,7 +176,7 @@ cask 'visual-studio-code' # Open-source code editor
 # cask 'postman' # Collaboration platform for API development
 # cask 'postman-agent' # Desktop agent for Postman on the Web
 # cask 'soapui' # Desktop agent for Postman on the Web
-cask 'touch-portal' # Shortcuts from other screen
+# cask 'touch-portal' # Shortcuts from other screen
 
 ##################################################
 ## End-User Tools                               ##
@@ -185,6 +209,9 @@ cask 'hazel' # Automated organisation
 cask 'oversight' # Monitors computer mic and webcam
 cask 'turbo-boost-switcher' # Enable and disable the Intel CPU Turbo Boost feature
 cask 'tuxera-ntfs' # File system and storage management software
+cask 'macfuse' # File system integration
+cask 'gromgit/fuse/ntfs-3g-mac'
+cask 'mounty' # Re-mounts write-protected NTFS volumes
 # cask 'ubar' # Window manager and productivity tool
 cask 'audio-hijack' # Records audio from any application
 cask 'soundsource' # Sound and audio controller
@@ -192,6 +219,26 @@ cask 'loopback' # Cable-free audio router
 cask 'aerial' # Apple TV Aerial screensaver
 cask 'xscreensaver' # Screen savers
 # TODO: Add custom screensavers as casks
+cask 'tripmode' # Control your data usage on slow or expensive networks
+cask 'moom' # Utility to move and zoom windows—on one display
+cask 'onyx' # Verify system files structure, run miscellaneous maintenance and more
+cask 'hovrly' # Display and convert timezones time in different cities
+cask 'shottr' # Screenshot measurement and annotation tool
+cask 'tomatobar' # Menu bar pomodoro timer Fork: https://github.com/AuroraWright/TomatoBar
+cask 'spotmenu' # Spotify and iTunes in the menu bar
+cask 'macmediakeyforwarder' # Media key forwarder for iTunes and Spotify
+cask 'dockfix' # Dock replacement
+
+# https://github.com/FelixKratz/JankyBorders
+tap 'FelixKratz/formulae'
+brew 'borders' # brew services start borders
+brew 'sketchybar' # This bar project aims to create a highly flexible, customizable, fast and powerful status bar replacement for people that like playing with shell scripts.
+                  # Further instructions: https://felixkratz.github.io/SketchyBar/setup
+
+# https://github.com/nikitabobko/AeroSpace
+tap 'nikitabobko/tap'
+brew 'aerospace' # brew services start borders
+
 
 ### Other Utilities
 cask 'a-better-finder-rename' # Renamer for files, music and photos
@@ -199,11 +246,13 @@ cask 'a-better-finder-rename' # Renamer for files, music and photos
 cask 'betterzip' # Utility to create and modify archives
 cask 'beyond-compare' # Compare files and folders
 cask 'downie' # Downloads videos from different websites
+cask 'netdownloadhelpercoapp' # Allows video downloads from the Web
 cask 'doxie' # Companion app for scanner hardware
 # cask 'fing' # Network Monitor
 # cask 'malwarebytes' # Warns about malware, adware and spyware
 cask 'path-finder' # File manager
 cask 'raspberry-pi-imager' # Imaging utility to install operating systems to a microSD card
+cask 'sdformatter' # Tool to format memory cards complying with the SD File System spec
 # cask 'raven-reader' # News reader with flexible settings
 
 ### Office Suite
@@ -216,8 +265,9 @@ cask 'microsoft-remote-desktop' # Remote desktop client
 cask 'onedrive' # Cloud storage client
 
 ### Communication and Conferencing
-cask 'franz' # Messaging app for WhatsApp, Facebook Messenger, Slack, Telegram and more
+# cask 'franz' # Messaging app for WhatsApp, Facebook Messenger, Slack, Telegram and more
 # cask 'postbox' # Email client focusing on privacy protection
+cask 'rambox' # Workspace simplifier - to organize your workspace and boost your productivity
 cask 'webex' # Video communication and virtual meeting platform
 cask 'zoom' # Video communication and virtual meeting platform
 cask 'krisp' # Noise cancelling application
@@ -225,6 +275,7 @@ cask 'muzzle' # Silence embarrassing notifications while screensharing
 cask 'obs' # Open-source software for live streaming and screen recording
 
 ### Remote Access
+brew 'cloudflared' # Cloudflare Tunnel client (formerly Argo Tunnel)
 cask 'anydesk' # Allows connection to a computer remotely
 cask 'teamviewer' # Remote access and connectivity software focused on security
 # cask 'vnc-viewer' # Remote desktop application focusing on security
@@ -232,13 +283,16 @@ cask 'teamviewer' # Remote access and connectivity software focused on security
 ### Multimedia Players & Noise Generators
 # cask 'brainfm' # Desktop client for brain.fm
 # cask 'tunein' # Free Internet Radio
-cask 'mpv' # Media player based on MPlayer and mplayer2
+# cask 'mpv' # Media player based on MPlayer and mplayer2
+cask 'inna' # Free and open-source media player
 # cask 'plexamp' # Music player focusing on visuals
-cask 'plex' # Home media player (meant to be used sitting in front of your monitor with a keyboard and mouse)
+# cask 'plex' # Home media player (meant to be used sitting in front of your monitor with a keyboard and mouse)
 # cask 'plex-htpc' # Home Theater PC media player (meant to be used sitting on a couch 10 ft away from your tv with a remote)
 cask 'sonos' # Control your Sonos system
 cask 'spotify' # Music streaming service
-cask 'vlc' # Multimedia player
+# cask 'vlc' # Multimedia player
+cask 'iina' # Free and open-source media player
+cask 'stolendata-mpv' # Media player based on MPlayer and mplayer2
 cask 'handbrake' # Open-source video transcoder available for Linux, Mac, and Windows
 
 ##################################################
@@ -557,7 +611,7 @@ cask 'alejakun/cask/font-prog-whois-mono-nerd-font'
 
 ### Java
 # brew 'openjdk@8'
-# brew 'openjdk@11'
+brew 'openjdk@11'
 # brew 'openjdk@17'
 
 ### Other languages
