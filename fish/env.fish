@@ -8,8 +8,8 @@ export EDITOR=nvim
 export DOTFILES=$HOME/.dotfiles
 
 # Add Brew GNU, Java and Python to $PATH
-fish_add_path --prepend $(brew --prefix)/bin
 fish_add_path --prepend $(brew --prefix coreutils)/libexec/gnubin
+fish_add_path --prepend $(brew --prefix)/bin
 fish_add_path --prepend $(brew --prefix)/opt/openjdk@8/bin
 fish_add_path --prepend $(brew --prefix)/opt/python@3.10/libexec/bin
 
